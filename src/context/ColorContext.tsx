@@ -18,7 +18,7 @@ const defaultPalette: Palette = {
 
 const ColorContext = createContext({
   palette: defaultPalette,
-  setPalette: () => { },
+  setPalette: (_palette: Palette) => { },
   reset: () => { },
 });
 
