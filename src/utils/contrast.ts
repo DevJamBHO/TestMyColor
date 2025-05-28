@@ -133,7 +133,7 @@ export function suggestClosestAccessibleColor(baseColor: string, backgroundColor
 }
 
 // Suggestion multi-blocs : trouve la couleur la plus conforme sur plusieurs fonds
-export function suggestBestMultiContrastColor(baseColor: string, backgrounds: string[], minRatioAAA = 7, minRatioAA = 4.5) {
+export function suggestBestMultiContrastColor(baseColor: string, backgrounds: string[]) {
     let { h, s, l } = hexToHsl(baseColor);
     let best = {
         color: baseColor,

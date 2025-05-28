@@ -1,6 +1,5 @@
 import { useColors } from '../context/ColorContext';
 import { calculateContrastRatio, getWCAGCompliance, suggestBestMultiContrastColor } from '../utils/contrast';
-import { useState } from 'react';
 import CustomButton from './ui/CustomButton';
 
 const badgeStyle = (compliance: string) => {
@@ -35,7 +34,6 @@ const blockLabels = {
 
 const ContrastPreview = () => {
   const { palette, setPalette } = useColors();
-  const [suggestion, setSuggestion] = useState<{ key: string, color: string } | null>(null);
 
   // Suggestion globale multi-blocs
   const backgrounds = [palette.background, palette.primary, palette.secondary];
@@ -44,19 +42,18 @@ const ContrastPreview = () => {
 
   const handleApplySuggestion = (key: string, color: string) => {
     setPalette({ ...palette, [key]: color });
-    setSuggestion(null);
   };
 
-  const renderContrastInfo = (backgroundColor: string, textColor: string, key: string, label: string) => {
+  const renderContrastInfo = (backgroundColor: string, textColor: string) => {
     const ratio = calculateContrastRatio(backgroundColor, textColor);
     const compliance = getWCAGCompliance(ratio);
     const largeTextCompliance = getWCAGCompliance(ratio, true);
     return (
       <div style={{ marginTop: '1rem', fontSize: '0.98rem' }}>
         <span style={badgeStyle(compliance)}>{icon(compliance)} {compliance}</span>
-        <span style={badgeStyle(largeTextCompliance)}>{icon(largeTextCompliance)} {largeTextCompliance} (texte large)</span>
+        <span style={badgeStyle(largeTextCompliance)}>{icon(largeTextCompliance)} {largeTextCompliance} (large text)</span>
         <div style={{ marginTop: 6, color: '#555', fontSize: '0.97em' }}>
-          Ratio de contraste : <b>{ratio.toFixed(2)}:1</b>
+          Contrast ratio: <b>{ratio.toFixed(2)}:1</b>
         </div>
       </div>
     );
@@ -130,7 +127,7 @@ const ContrastPreview = () => {
           <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
             This text is displayed on the main background.
           </p>
-          {renderContrastInfo(palette.background, palette.text, 'text', 'Text on Background')}
+          {renderContrastInfo(palette.background, palette.text)}
         </div>
         <div style={{
           padding: '1.5rem',
@@ -144,7 +141,7 @@ const ContrastPreview = () => {
           <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
             This text is displayed on the primary background.
           </p>
-          {renderContrastInfo(palette.primary, palette.text, 'text', 'Text on Primary')}
+          {renderContrastInfo(palette.primary, palette.text)}
         </div>
         <div style={{
           padding: '1.5rem',
@@ -158,7 +155,7 @@ const ContrastPreview = () => {
           <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
             This text is displayed on the secondary background.
           </p>
-          {renderContrastInfo(palette.secondary, palette.text, 'text', 'Text on Secondary')}
+          {renderContrastInfo(palette.secondary, palette.text)}
         </div>
       </div>
     </div>
