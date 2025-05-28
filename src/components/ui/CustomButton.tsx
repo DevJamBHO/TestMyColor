@@ -4,7 +4,7 @@ import { useColors } from '../../context/ColorContext';
 export type Variant = 'filled' | 'outline' | 'ghost';
 export type Size = 'small' | 'medium' | 'large';
 
-interface CustomButtonProps {
+interface CustomButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   variant?: Variant;
   color?: 'primary' | 'secondary' | 'tertiary';
@@ -12,12 +12,19 @@ interface CustomButtonProps {
   disabled?: boolean;
 }
 
+const sizeStyles: Record<Size, React.CSSProperties> = {
+  small: { fontSize: '0.75rem', padding: '0.2rem 0.6rem' },
+  medium: { fontSize: '1rem', padding: '0.5rem 1.2rem' },
+  large: { fontSize: '1.25rem', padding: '0.75rem 2rem' },
+};
+
 const CustomButton: React.FC<CustomButtonProps> = ({
   label,
   variant = 'filled',
   color = 'primary',
   size = 'medium',
   disabled = false,
+  ...rest
 }) => {
   const { palette } = useColors();
   const bg = palette[color];
@@ -27,14 +34,9 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   const backgroundColor =
     variant === 'filled' ? bg : variant === 'ghost' ? 'transparent' : 'transparent';
 
-  const sizeStyles: Record<Size, React.CSSProperties> = {
-    small: { fontSize: '0.75rem', padding: '0.4rem 0.75rem' },
-    medium: { fontSize: '1rem', padding: '0.75rem 1.25rem' },
-    large: { fontSize: '1.25rem', padding: '1rem 2rem' },
-  };
-
   return (
     <button
+      type="button"
       disabled={disabled}
       style={{
         backgroundColor: disabled ? '#ccc' : backgroundColor,
@@ -43,8 +45,10 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         borderRadius: '6px',
         cursor: disabled ? 'not-allowed' : 'pointer',
         transition: 'all 0.3s ease',
+        height: 'fit-content',
         ...sizeStyles[size],
       }}
+      {...rest}
     >
       {label}
     </button>

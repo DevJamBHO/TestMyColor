@@ -14,14 +14,14 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, ogImage }) => {
     const fullTitle = `${title} | ${siteName}`;
     const defaultKeywords = 'color palette, web design, color testing, typography, UI design, web design';
     const defaultOgImage = '/og-image.jpg';
-    const canonicalUrl = `https://testmycolors.com${location.pathname}`;
+    const canonicalUrl = `https://test-my-color.com/color${location.pathname}`;
 
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "TestMyColors",
+        "name": "TestMyColor",
         "description": "A tool for testing and visualizing color palettes in real-time",
-        "url": "https://testmycolors.com",
+        "url": "https://test-my-color.com",
         "applicationCategory": "DesignApplication",
         "operatingSystem": "Web",
         "offers": {
