@@ -9,6 +9,17 @@ interface PlausibleOptions {
     callback?: () => void;
 }
 
+// Initialisation de Plausible
+const initPlausible = () => {
+    if (typeof window !== 'undefined') {
+        // Track pageview
+        window.plausible('pageview');
+
+        // Track initial AI visit if applicable
+        detectAIVisit();
+    }
+};
+
 export const trackEvent = (eventName: string, props?: Record<string, string | number | boolean>) => {
     if (typeof window !== 'undefined' && window.plausible) {
         window.plausible(eventName, { props });
@@ -71,7 +82,7 @@ const detectAIVisit = () => {
     return isAI;
 };
 
-// Appeler la détection au chargement
+// Appeler l'initialisation au chargement
 if (typeof window !== 'undefined') {
-    detectAIVisit();
+    initPlausible();
 } 
