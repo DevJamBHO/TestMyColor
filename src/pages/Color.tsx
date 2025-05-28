@@ -7,6 +7,7 @@ import Header from '../components/ui/Header';
 import { useColors } from '../context/ColorContext';
 import Separator from '../components/ui/Separator';
 import { useFont } from '../context/FontContext';
+import { ExportPalette } from '../components/ExportPalette';
 
 const Color = () => {
     const { palette } = useColors();
@@ -24,6 +25,8 @@ const Color = () => {
                 <ColorInputs />
                 <Separator />
                 <PaletteGrid />
+                <Separator />
+                <ExportPalette />
                 <Separator />
                 <ContrastPreview />
                 <Separator />
