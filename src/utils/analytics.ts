@@ -31,6 +31,12 @@ export const AnalyticsEvents = {
     // Événements d'engagement
     BUTTON_CLICKED: 'Button Clicked',
     FORM_SUBMITTED: 'Form Submitted',
+
+    // Événements spécifiques pour le tracking des visites IA
+    AI_VISIT: 'ai_visit',
+    AI_INTERACTION: 'ai_interaction',
+    AI_COLOR_TEST: 'ai_color_test',
+    AI_TYPO_TEST: 'ai_typo_test',
 } as const;
 
 // Exemple d'utilisation avec des propriétés typées
@@ -45,4 +51,27 @@ export const trackPaletteEvent = (
     };
 
     trackEvent(event, props);
-}; 
+};
+
+// Fonction pour détecter si la visite provient probablement d'une IA
+const detectAIVisit = () => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isAI = userAgent.includes('openai') ||
+        userAgent.includes('anthropic') ||
+        userAgent.includes('claude') ||
+        userAgent.includes('gpt');
+
+    if (isAI) {
+        trackPaletteEvent(AnalyticsEvents.AI_VISIT, undefined, {
+            userAgent: userAgent,
+            timestamp: new Date().toISOString()
+        });
+    }
+
+    return isAI;
+};
+
+// Appeler la détection au chargement
+if (typeof window !== 'undefined') {
+    detectAIVisit();
+} 
