@@ -1,6 +1,7 @@
 import { useColors } from '../context/ColorContext';
 import { calculateContrastRatio, getWCAGCompliance, suggestBestMultiContrastColor } from '../utils/contrast';
 import CustomButton from './ui/CustomButton';
+import { trackPaletteEvent, AnalyticsEvents } from '../utils/analytics';
 
 const badgeStyle = (compliance: string) => {
   let bg = '#e74c3c', color = '#fff';
@@ -42,12 +43,27 @@ const ContrastPreview = () => {
 
   const handleApplySuggestion = (key: string, color: string) => {
     setPalette({ ...palette, [key]: color });
+    trackPaletteEvent(AnalyticsEvents.CONTRAST_SUGGESTION_APPLIED, undefined, {
+      targetBackground: key,
+      newColor: color,
+      previousColor: palette[key as keyof typeof palette],
+    });
   };
 
   const renderContrastInfo = (backgroundColor: string, textColor: string) => {
     const ratio = calculateContrastRatio(backgroundColor, textColor);
     const compliance = getWCAGCompliance(ratio);
     const largeTextCompliance = getWCAGCompliance(ratio, true);
+
+    // Track contrast check
+    trackPaletteEvent(AnalyticsEvents.CONTRAST_CHECKED, undefined, {
+      backgroundColor,
+      textColor,
+      ratio: ratio.toFixed(2),
+      compliance,
+      largeTextCompliance,
+    });
+
     return (
       <div style={{ marginTop: '1rem', fontSize: '0.98rem' }}>
         <span style={badgeStyle(compliance)}>{icon(compliance)} {compliance}</span>

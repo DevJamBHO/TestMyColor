@@ -1,7 +1,22 @@
 import { useColors } from '../context/ColorContext';
+import { trackPaletteEvent, AnalyticsEvents } from '../utils/analytics';
 
 const LayoutPreview = () => {
   const { palette } = useColors();
+
+  const handleButtonClick = (buttonName: string) => {
+    trackPaletteEvent(AnalyticsEvents.BUTTON_CLICKED, undefined, {
+      buttonName,
+      section: 'layout-preview'
+    });
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    trackPaletteEvent(AnalyticsEvents.FORM_SUBMITTED, undefined, {
+      formName: 'contact-form'
+    });
+  };
 
   return (
     <div
@@ -38,6 +53,7 @@ const LayoutPreview = () => {
           <h2 id="hero-title">Create a site that reflects your brand</h2>
           <p>Test your colors in real-time on different interface elements.</p>
           <button
+            onClick={() => handleButtonClick('try-now')}
             style={{
               backgroundColor: palette.secondary,
               color: '#fff',
@@ -84,14 +100,16 @@ const LayoutPreview = () => {
             <p style={{ marginBottom: '1rem', opacity: 0.9 }}>
               Test your colors in real-time on different interface elements.
             </p>
-            <button style={{
-              padding: '0.5rem 1rem',
-              backgroundColor: 'white',
-              color: palette.primary,
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}>
+            <button
+              onClick={() => handleButtonClick('learn-more')}
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: 'white',
+                color: palette.primary,
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer'
+              }}>
               Learn More
             </button>
           </div>
@@ -144,7 +162,7 @@ const LayoutPreview = () => {
       {/* Formulaire de contact */}
       <section style={{ marginBottom: '3rem' }}>
         <h2>Contact</h2>
-        <form style={{ maxWidth: '500px' }}>
+        <form onSubmit={handleFormSubmit} style={{ maxWidth: '500px' }}>
           <div style={{ marginBottom: '1rem' }}>
             <label htmlFor="name">Nom</label>
             <input type="text" id="name" style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }} />
@@ -157,7 +175,10 @@ const LayoutPreview = () => {
             <label htmlFor="message">Message</label>
             <textarea id="message" rows={4} style={{ width: '100%', padding: '0.5rem', marginTop: '0.25rem' }} />
           </div>
-          <button type="submit" style={{ backgroundColor: palette.secondary, color: '#fff', padding: '0.75rem 1.25rem', border: 'none', borderRadius: '4px' }}>
+          <button
+            type="submit"
+            onClick={() => handleButtonClick('submit-contact')}
+            style={{ backgroundColor: palette.secondary, color: '#fff', padding: '0.75rem 1.25rem', border: 'none', borderRadius: '4px' }}>
             Envoyer
           </button>
         </form>

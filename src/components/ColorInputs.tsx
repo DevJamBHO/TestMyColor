@@ -1,13 +1,21 @@
 import React from 'react';
 import { useColors } from '../context/ColorContext';
 import SectionTitle from './ui/SectionTitle';
+import { trackPaletteEvent, AnalyticsEvents } from '../utils/analytics';
 
 const ColorInputs = () => {
   const { palette, setPalette } = useColors();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    const previousValue = palette[name as keyof typeof palette];
     setPalette({ ...palette, [name]: value });
+
+    trackPaletteEvent(AnalyticsEvents.COLOR_CHANGED, undefined, {
+      colorType: name,
+      previousColor: previousValue,
+      newColor: value
+    });
   };
 
   return (

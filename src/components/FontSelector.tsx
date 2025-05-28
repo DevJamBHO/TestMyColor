@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useFont } from '../context/FontContext';
 import SectionTitle from './ui/SectionTitle';
+import { trackPaletteEvent, AnalyticsEvents } from '../utils/analytics';
 
 const googleFonts = [
     'Inter',
@@ -19,6 +20,10 @@ const FontSelector = () => {
         const font = e.target.value;
         loadGoogleFont(font);
         setFont(`'${font}', sans-serif`);
+        trackPaletteEvent(AnalyticsEvents.FONT_CHANGED, undefined, {
+            fontName: font,
+            source: 'google-fonts'
+        });
     };
 
     const loadGoogleFont = (font: string) => {
@@ -51,6 +56,13 @@ const FontSelector = () => {
             document.head.appendChild(style);
             setCustomFont(fontName);
             setFont(`'${fontName}', sans-serif`);
+
+            trackPaletteEvent(AnalyticsEvents.FONT_CHANGED, undefined, {
+                fontName,
+                source: 'custom-upload',
+                fileType: file.type,
+                fileSize: file.size
+            });
         };
         reader.readAsDataURL(file);
     };
