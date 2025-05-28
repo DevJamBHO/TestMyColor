@@ -1,4 +1,4 @@
-# TestMyColors 🎨
+# test-my-color 🎨
 
 A powerful and intuitive web application for testing and visualizing color palettes in real-time. Create consistent and harmonious designs for your web projects with ease.
 

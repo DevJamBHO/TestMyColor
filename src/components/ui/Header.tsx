@@ -52,8 +52,25 @@ const Header = () => {
                 fontFamily: font
             }}
         >
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, fontFamily: 'inherit' }}>
-                Test<span style={{ color: palette.primary }}>My</span>Colors
+            <div style={{
+                fontSize: '1.5rem',
+                fontWeight: 700,
+                fontFamily: 'inherit',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+            }}>
+                <img
+                    src="/android-chrome-192x192.png"
+                    alt="test-my-color logo"
+                    style={{
+                        width: '24px',
+                        height: '24px'
+                    }}
+                    loading="lazy"
+                    decoding="async"
+                />
+                <span>Test<span style={{ color: palette.primary }}>My</span>Color</span>
             </div>
 
             {/* Desktop navigation */}

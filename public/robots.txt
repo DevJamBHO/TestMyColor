@@ -1,6 +1,30 @@
 User-agent: *
 Allow: /
+Allow: /sitemap.xml
+Allow: /color
+Allow: /typo
+Allow: /llms.txt
+
+# Empêcher l'indexation des pages d'administration et des API
+Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
 
-Sitemap: https://testmycolors.com/sitemap.xml 
+# Empêcher l'indexation des fichiers de développement
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*.map$
+
+# Autoriser l'indexation des images
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Sitemap
+Sitemap: https://test-my-color.com/sitemap.xml
+
+# Crawl-delay pour éviter de surcharger le serveur
+Crawl-delay: 10 

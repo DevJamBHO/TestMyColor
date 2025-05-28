@@ -5,25 +5,94 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>test-my-color - Test Your Color Palettes in Real-Time</title>
   <meta name="description"
-    content="TestMyColors - Visualize and test your color palettes in real-time. Create consistent and harmonious designs for your web projects." />
+    content="test-my-color - Visualize and test your color palettes in real-time. Create consistent and harmonious designs for your web projects." />
   <meta name="keywords" content="color palette, web design, color testing, typography, UI design, web design" />
-  <meta name="author" content="TestMyColors" />
-  <meta property="og:title" content="TestMyColors - Test Your Color Palettes" />
+  <meta name="author" content="test-my-color" />
+  <link rel="canonical" href="https://test-my-color.com" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://test-my-color.com" />
+  <meta property="og:title" content="test-my-color - Test Your Color Palettes" />
   <meta property="og:description"
     content="Visualize and test your color palettes in real-time. Create consistent and harmonious designs for your web projects." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://testmycolors.com" />
+  <meta property="og:image" content="https://test-my-color.com/android-chrome-512x512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <title>TestMyColors - Test Your Color Palettes in Real-Time</title>
+  <meta name="twitter:url" content="https://test-my-color.com" />
+  <meta name="twitter:title" content="test-my-color - Test Your Color Palettes" />
+  <meta name="twitter:description"
+    content="Visualize and test your color palettes in real-time. Create consistent and harmonious designs for your web projects." />
+  <meta name="twitter:image" content="https://test-my-color.com/android-chrome-512x512.png" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#4a90e2" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="test-my-color" />
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://plausible.sapling-toss.com" />
+  <link rel="preload" href="/og-image.jpg" as="image" />
+  <link rel="preload" href="/twitter-image.jpg" as="image" />
+  <link rel="preload" as="image" href="/android-chrome-512x512.png" />
+
+  <!-- Analytics -->
   <script defer data-domain="test-my-color.com"
     src="https://plausible.sapling-toss.com/js/script.hash.outbound-links.pageview-props.tagged-events.js"></script>
   <script>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "test-my-color",
+      "description": "Visualize and test your color palettes in real-time. Create consistent and harmonious designs for your web projects.",
+      "url": "https://test-my-color.com",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "screenshot": "https://test-my-color.com/og-image.jpg",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "inLanguage": ["fr", "en"]
+    }
+  </script>
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('ServiceWorker registration successful');
+          })
+          .catch(err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+  </script>
 </body>
 
 </html>

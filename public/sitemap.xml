@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://testmycolors.com/</loc>
-    <lastmod>2025-04-07</lastmod>
+    <loc>https://test-my-color.com/</loc>
+    <lastmod>2025-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://test-my-color.com/og-image.jpg</image:loc>
+      <image:title>test-my-color - Color Palette Testing Tool</image:title>
+    </image:image>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://test-my-color.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://test-my-color.com/"/>
   </url>
   <url>
-    <loc>https://testmycolors.com/color</loc>
-    <lastmod>2025-04-07</lastmod>
+    <loc>https://test-my-color.com/color</loc>
+    <lastmod>2025-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://test-my-color.com/color-preview.jpg</image:loc>
+      <image:title>Color Palette Testing Interface</image:title>
+    </image:image>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://test-my-color.com/fr/color"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://test-my-color.com/color"/>
   </url>
   <url>
-    <loc>https://testmycolors.com/typo</loc>
-    <lastmod>2025-04-07</lastmod>
+    <loc>https://test-my-color.com/typo</loc>
+    <lastmod>2025-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://test-my-color.com/typo-preview.jpg</image:loc>
+      <image:title>Typography Testing Interface</image:title>
+    </image:image>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://test-my-color.com/fr/typo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://test-my-color.com/typo"/>
   </url>
 </urlset> 
