@@ -4,6 +4,7 @@ import TypoPlayground from '../components/TypoPlayground';
 import PageWrapper from '../components/ui/PageWrapper';
 import Separator from '../components/ui/Separator';
 import Header from '../components/ui/Header';
+import Breadcrumb from '../components/Breadcrumb';
 import { useColors } from '../context/ColorContext';
 import { useFont } from '../context/FontContext';
 
@@ -17,6 +18,7 @@ const Typo = () => {
             fontFamily: font,
         }}>
             <Header />
+            <Breadcrumb />
             <PageWrapper>
                 <FontSelector />
                 <Separator />

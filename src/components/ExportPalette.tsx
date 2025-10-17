@@ -70,8 +70,7 @@ export const ExportPalette: React.FC = () => {
     };
 
     return (
-        <div style={{ marginBottom: '3rem' }}>
-            <h2 style={{ marginBottom: '1.5rem' }}>Export Palette</h2>
+        <div>
             <div style={{ display: 'flex', gap: 10, marginBottom: 18 }}>
                 {exportFormats.map((format) => (
                     <CustomButton

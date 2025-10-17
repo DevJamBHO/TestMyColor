@@ -1,10 +1,11 @@
 import React from 'react';
-import { useColors } from '../../context/ColorContext';
+import { AdaptiveButton } from '../../design-system';
 
+// Types pour la compatibilité avec l'API existante
 export type Variant = 'filled' | 'outline' | 'ghost';
 export type Size = 'small' | 'medium' | 'large';
 
-interface CustomButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface CustomButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
   label: string;
   variant?: Variant;
   color?: 'primary' | 'secondary' | 'tertiary';
@@ -12,10 +13,18 @@ interface CustomButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
   disabled?: boolean;
 }
 
-const sizeStyles: Record<Size, React.CSSProperties> = {
-  small: { fontSize: '0.75rem', padding: '0.2rem 0.6rem' },
-  medium: { fontSize: '1rem', padding: '0.5rem 1.2rem' },
-  large: { fontSize: '1.25rem', padding: '0.75rem 2rem' },
+// Mapping des tailles vers le design system
+const sizeMapping: Record<Size, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> = {
+  small: 'sm',
+  medium: 'md',
+  large: 'lg',
+};
+
+// Mapping des variantes vers le design system
+const variantMapping: Record<Variant, 'filled' | 'outline' | 'ghost' | 'link'> = {
+  filled: 'filled',
+  outline: 'outline',
+  ghost: 'ghost',
 };
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -24,34 +33,21 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   color = 'primary',
   size = 'medium',
   disabled = false,
+  style,
   ...rest
 }) => {
-  const { palette } = useColors();
-  const bg = palette[color];
-  const text = variant === 'filled' ? '#fff' : bg;
-  const border =
-    variant === 'outline' ? `2px solid ${bg}` : variant === 'ghost' ? 'none' : 'none';
-  const backgroundColor =
-    variant === 'filled' ? bg : variant === 'ghost' ? 'transparent' : 'transparent';
-
   return (
-    <button
-      type="button"
+    <AdaptiveButton
+      variant={variantMapping[variant]}
+      color={color}
+      size={sizeMapping[size]}
       disabled={disabled}
-      style={{
-        backgroundColor: disabled ? '#ccc' : backgroundColor,
-        color: disabled ? '#666' : text,
-        border: disabled ? 'none' : border,
-        borderRadius: '6px',
-        cursor: disabled ? 'not-allowed' : 'pointer',
-        transition: 'all 0.3s ease',
-        height: 'fit-content',
-        ...sizeStyles[size],
-      }}
+      useContextColors={true}
+      style={style}
       {...rest}
     >
       {label}
-    </button>
+    </AdaptiveButton>
   );
 };
 

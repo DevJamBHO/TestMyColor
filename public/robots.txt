@@ -1,9 +1,20 @@
 User-agent: *
 Allow: /
-Allow: /sitemap.xml
+
+# Optimisation SEO pour RGAA - Pages prioritaires
 Allow: /color
+Allow: /rgaa-lab
 Allow: /typo
+Allow: /design-system
+Allow: /smart-palette
+
+# Fichiers statiques importants
+Allow: /sitemap.xml
 Allow: /llms.txt
+Allow: /android-chrome-*.png
+Allow: /apple-touch-icon.png
+Allow: /favicon.ico
+Allow: /manifest.json
 
 # Empêcher l'indexation des pages d'administration et des API
 Disallow: /admin/
@@ -11,9 +22,13 @@ Disallow: /api/
 Disallow: /private/
 
 # Empêcher l'indexation des fichiers de développement
+Disallow: /src/
+Disallow: /node_modules/
 Disallow: /*.js$
 Disallow: /*.css$
 Disallow: /*.map$
+Disallow: /test/
+Disallow: /coverage/
 
 # Autoriser l'indexation des images
 Allow: /*.jpg$
@@ -26,5 +41,5 @@ Allow: /*.webp$
 # Sitemap
 Sitemap: https://test-my-color.com/sitemap.xml
 
-# Crawl-delay pour éviter de surcharger le serveur
-Crawl-delay: 10 
+# Crawl-delay optimisé pour SEO
+Crawl-delay: 1 

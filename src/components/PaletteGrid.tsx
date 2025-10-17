@@ -4,8 +4,7 @@ const PaletteGrid = () => {
     const { palette } = useColors();
 
     return (
-        <div style={{ marginBottom: '3rem' }}>
-            <h2 style={{ marginBottom: '1.5rem' }}>Palette Preview</h2>
+        <div>
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',

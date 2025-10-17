@@ -4,8 +4,8 @@ import { useFont } from '../../context/FontContext';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
-    const { palette, reset: resetColors } = useColors();
-    const { font, resetFontPreferences } = useFont();
+    const { palette } = useColors();
+    const { font } = useFont();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -28,13 +28,11 @@ const Header = () => {
 
     const navLinks = [
         { label: 'Colors', href: '/color' },
-        { label: 'Typography', href: '/typo' }
+        { label: 'Typography', href: '/typo' },
+        { label: 'Smart Palette', href: '/smart-palette' },
+        { label: 'Laboratoire RGAA', href: '/rgaa-lab' },
+        { label: 'Design System', href: '/design-system' }
     ];
-
-    const handleReset = () => {
-        resetColors();
-        resetFontPreferences();
-    };
 
     return (
         <header
@@ -97,22 +95,6 @@ const Header = () => {
                         {label}
                     </NavLink>
                 ))}
-                <button
-                    onClick={handleReset}
-                    style={{
-                        marginLeft: '1rem',
-                        padding: '0.4rem 0.8rem',
-                        fontSize: '0.9rem',
-                        borderRadius: '6px',
-                        border: `1px solid ${palette.text}`,
-                        backgroundColor: 'transparent',
-                        color: palette.text,
-                        cursor: 'pointer',
-                        fontFamily: 'inherit'
-                    }}
-                >
-                    Reset
-                </button>
             </nav>
 
             {/* Mobile hamburger */}
@@ -186,26 +168,6 @@ const Header = () => {
                             {label}
                         </NavLink>
                     ))}
-
-                    <button
-                        onClick={() => {
-                            setIsMobileMenuOpen(false);
-                            handleReset();
-                        }}
-                        style={{
-                            marginTop: '2rem',
-                            padding: '0.5rem 1rem',
-                            fontSize: '1rem',
-                            border: `1px solid ${palette.text}`,
-                            borderRadius: '8px',
-                            backgroundColor: 'transparent',
-                            color: palette.text,
-                            cursor: 'pointer',
-                            fontFamily: 'inherit'
-                        }}
-                    >
-                        Reset
-                    </button>
                 </div>
             )}
 
