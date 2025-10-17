@@ -34,6 +34,8 @@ const GlobalSidebarMenu: React.FC = () => {
 
         if (currentPath === '/color') {
             baseSections.add('color');
+        } else if (currentPath === '/typo') {
+            baseSections.add('typo');
         }
 
         return baseSections;
@@ -68,6 +70,14 @@ const GlobalSidebarMenu: React.FC = () => {
             { id: 'export', label: 'Export palette', href: '#export', icon: '' },
             { id: 'faq', label: 'Questions fréquentes', href: '#faq', icon: '' }
         ],
+        '/typo': [
+            { id: 'overview', label: 'Vue d\'ensemble', href: '#overview', icon: '' },
+            { id: 'typography-tools', label: 'Outils de Typographie', href: '#typography-tools', icon: '' },
+            { id: 'compliance-checker', label: 'Vérificateur WCAG', href: '#compliance-checker', icon: '' },
+            { id: 'education', label: 'Informations Police', href: '#education', icon: '' },
+            { id: 'playground', label: 'Playground', href: '#playground', icon: '' },
+            { id: 'faq', label: 'Questions fréquentes', href: '#faq', icon: '' }
+        ]
     };
 
     // Menu de navigation principal - correspond exactement au header
@@ -88,6 +98,21 @@ const GlobalSidebarMenu: React.FC = () => {
                 { id: 'color-checker', label: 'Vérificateur RGAA', href: '/color#compliance-checker', icon: '' },
                 { id: 'color-education', label: 'Formation RGAA', href: '/color#education', icon: '' },
                 { id: 'color-export', label: 'Export palette', href: '/color#export', icon: '' }
+            ]
+        },
+        {
+            id: 'typo',
+            label: 'Typographie',
+            href: '/typo',
+            icon: '',
+            description: 'Guide de bonnes pratiques typographiques',
+            children: [
+                { id: 'typo-overview', label: 'Vue d\'ensemble', href: '/typo#overview', icon: '' },
+                { id: 'typo-tools', label: 'Outils de Typographie', href: '/typo#typography-tools', icon: '' },
+                { id: 'typo-compliance', label: 'Vérificateur WCAG', href: '/typo#compliance-checker', icon: '' },
+                { id: 'typo-education', label: 'Informations Police', href: '/typo#education', icon: '' },
+                { id: 'typo-playground', label: 'Playground', href: '/typo#playground', icon: '' },
+                { id: 'typo-faq', label: 'Questions fréquentes', href: '/typo#faq', icon: '' }
             ]
         }
     ];

@@ -29,5 +29,17 @@
     </image:image>
   </url>
 
+  <!-- Typographie -->
+  <url>
+    <loc>https://test-my-color.com/typo</loc>
+    <lastmod>2025-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://test-my-color.com/android-chrome-512x512.png</image:loc>
+      <image:title>Guide Typographie Accessible 2025 - Bonnes Pratiques WCAG &amp; Lisibilité</image:title>
+      <image:caption>Guide complet de typographie accessible avec bonnes pratiques WCAG 2.1. Testez la lisibilité, contraste et accessibilité de vos polices</image:caption>
+    </image:image>
+  </url>
 
 </urlset> 

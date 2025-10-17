@@ -6,6 +6,7 @@ import { ControlPanelsProvider } from './context/ControlPanelsContext';
 import { PanelsStateProvider } from './context/PanelsStateContext';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Color from './pages/Color';
+import Typo from './pages/Typo';
 import NotFound from './pages/NotFound';
 import { useEffect } from 'react';
 import { trackEvent } from './utils/analytics';
@@ -53,6 +54,7 @@ const AppContent: React.FC = () => {
           <Routes>
             <Route path="/" element={<Navigate to="/color" />} />
             <Route path="/color" element={<Color />} />
+            <Route path="/typo" element={<Typo />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
