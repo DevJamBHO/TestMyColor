@@ -28,12 +28,10 @@ const ColorBlindControls = forwardRef<ColorBlindControlsRef, ColorBlindControlsP
     return (
         <FloatingPanel
             ref={panelRef}
-            title="Color Blindness Simulator"
+            title="Simulateur de Daltonisme"
             icon="👁"
             position="top-right"
-            closedMessage="Active simulation - Click 'Open' to configure"
-            isActive={selectedType !== 'normal'}
-            showPulse={true}
+            closedMessage="Simulation active - Cliquez pour configurer"
             isOpen={isOpen}
             onOpenChange={onOpenChange}
         >

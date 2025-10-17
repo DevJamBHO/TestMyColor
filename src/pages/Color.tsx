@@ -14,10 +14,11 @@ import ColorPageContent from '../components/ColorPageContent';
 import ColorPerformanceOptimizer from '../components/ColorPerformanceOptimizer';
 import ColorAccessibilityEnhancer from '../components/ColorAccessibilityEnhancer';
 import ColorStructuredData from '../components/ColorStructuredData';
+import ColorFAQ from '../components/ColorFAQ';
 import Section from '../components/ui/Section';
 import Breadcrumb from '../components/Breadcrumb';
 
-const Color = () => {
+const Color: React.FC = () => {
     const { palette } = useColors();
     const { font } = useFont();
 
@@ -71,6 +72,14 @@ const Color = () => {
                         aria-label="Export de palette conforme RGAA"
                     >
                         <ExportPalette />
+                    </Section>
+                    <Section
+                        id="faq"
+                        title="Questions Fréquentes - RGAA Couleurs"
+                        role="region"
+                        aria-label="Questions fréquentes sur l'accessibilité des couleurs"
+                    >
+                        <ColorFAQ />
                     </Section>
                 </main>
             </PageWrapper>

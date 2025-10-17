@@ -2,12 +2,12 @@ import React from 'react';
 import { useColors } from '../context/ColorContext';
 import CustomButton from './ui/CustomButton';
 
-const ColorBreadcrumb: React.FC = () => {
+const TypographyBreadcrumb: React.FC = () => {
     const { palette } = useColors();
 
     const breadcrumbItems = [
         { label: 'Accueil', href: '/', current: false },
-        { label: 'RGAA Couleurs', href: '/color', current: true }
+        { label: 'Guide Typographie Accessible', href: '/typo', current: true }
     ];
 
     return (
@@ -72,4 +72,4 @@ const ColorBreadcrumb: React.FC = () => {
     );
 };
 
-export default ColorBreadcrumb;
+export default TypographyBreadcrumb;

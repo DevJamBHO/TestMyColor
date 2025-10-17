@@ -10,7 +10,10 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '4rem',
+                width: '100%',
+                boxSizing: 'border-box'
             }}
+            className="page-wrapper"
         >
             {children}
         </div>

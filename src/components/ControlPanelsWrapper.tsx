@@ -8,8 +8,10 @@ const ControlPanelsWrapper: React.FC = () => {
     const {
         colorControlsOpen,
         colorBlindControlsOpen,
+        typographyControlsOpen,
         setColorControlsOpen,
-        setColorBlindControlsOpen
+        setColorBlindControlsOpen,
+        setTypographyControlsOpen
     } = usePanelsState();
 
     return (
@@ -17,8 +19,10 @@ const ControlPanelsWrapper: React.FC = () => {
             ref={controlPanelsRef}
             colorControlsOpen={colorControlsOpen}
             colorBlindControlsOpen={colorBlindControlsOpen}
+            typographyControlsOpen={typographyControlsOpen}
             setColorControlsOpen={setColorControlsOpen}
             setColorBlindControlsOpen={setColorBlindControlsOpen}
+            setTypographyControlsOpen={setTypographyControlsOpen}
         />
     );
 };

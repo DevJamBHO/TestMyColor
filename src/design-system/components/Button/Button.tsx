@@ -196,34 +196,34 @@ export const Button: React.FC<ButtonProps> = ({
         borderColor: isDisabled ? colorConfig.disabled.borderColor : colorConfig.borderColor,
         textDecoration: variant === 'link' ? (isDisabled ? colorConfig.disabled.textDecoration : colorConfig.textDecoration) : 'none',
 
-        // Focus styles
-        '&:focus-visible': {
+        // Focus styles will be handled via onFocus/onBlur events
+    };
+
+    const [isHovered, setIsHovered] = React.useState(false);
+    const [isActive, setIsActive] = React.useState(false);
+    const [isFocused, setIsFocused] = React.useState(false);
+
+    const dynamicStyles = {
+        ...buttonStyles,
+        ...(isHovered && !isDisabled ? {
+            backgroundColor: colorConfig.hover.backgroundColor,
+            color: colorConfig.hover.color,
+            borderColor: colorConfig.hover.borderColor,
+            textDecoration: colorConfig.hover.textDecoration,
+            transform: 'translateY(-1px)',
+            boxShadow: getShadowValue('shadow.md'),
+        } : {}),
+        ...(isActive && !isDisabled ? {
+            backgroundColor: colorConfig.active.backgroundColor,
+            color: colorConfig.active.color,
+            borderColor: colorConfig.active.borderColor,
+            textDecoration: colorConfig.active.textDecoration,
+            transform: 'translateY(0)',
+            boxShadow: getShadowValue('shadow.sm'),
+        } : {}),
+        ...(isFocused ? {
             boxShadow: `0 0 0 3px ${getColorValue('accessible.focusRing')}`,
-        },
-
-        // Hover styles (applied via CSS-in-JS)
-        ...(isDisabled ? {} : {
-            '&:hover': {
-                backgroundColor: colorConfig.hover.backgroundColor,
-                color: colorConfig.hover.color,
-                borderColor: colorConfig.hover.borderColor,
-                textDecoration: colorConfig.hover.textDecoration,
-                transform: 'translateY(-1px)',
-                boxShadow: getShadowValue('shadow.md'),
-            },
-        }),
-
-        // Active styles
-        ...(isDisabled ? {} : {
-            '&:active': {
-                backgroundColor: colorConfig.active.backgroundColor,
-                color: colorConfig.active.color,
-                borderColor: colorConfig.active.borderColor,
-                textDecoration: colorConfig.active.textDecoration,
-                transform: 'translateY(0)',
-                boxShadow: getShadowValue('shadow.sm'),
-            },
-        }),
+        } : {}),
     };
 
     return (
@@ -231,7 +231,13 @@ export const Button: React.FC<ButtonProps> = ({
             type="button"
             disabled={isDisabled}
             className={`design-system-button ${className}`}
-            style={{ ...buttonStyles, ...style }}
+            style={{ ...dynamicStyles, ...style }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onMouseDown={() => setIsActive(true)}
+            onMouseUp={() => setIsActive(false)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
             {...props}
         >
             {loading && (
@@ -259,32 +265,10 @@ export const Button: React.FC<ButtonProps> = ({
                 </span>
             )}
 
-            <style jsx>{`
+            <style>{`
         @keyframes spin {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
-        }
-        
-        .design-system-button:hover:not(:disabled) {
-          background-color: ${colorConfig.hover.backgroundColor};
-          color: ${colorConfig.hover.color};
-          border-color: ${colorConfig.hover.borderColor};
-          text-decoration: ${colorConfig.hover.textDecoration || 'none'};
-          transform: translateY(-1px);
-          box-shadow: ${getShadowValue('shadow.md')};
-        }
-        
-        .design-system-button:active:not(:disabled) {
-          background-color: ${colorConfig.active.backgroundColor};
-          color: ${colorConfig.active.color};
-          border-color: ${colorConfig.active.borderColor};
-          text-decoration: ${colorConfig.active.textDecoration || 'none'};
-          transform: translateY(0);
-          box-shadow: ${getShadowValue('shadow.sm')};
-        }
-        
-        .design-system-button:focus-visible {
-          box-shadow: 0 0 0 3px ${getColorValue('accessible.focusRing')};
         }
       `}</style>
         </button>

@@ -1,5 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useState, useEffect } from 'react';
 import { useColors } from '../context/ColorContext';
+import { useFont } from '../context/FontContext';
+import { useColorBlind } from '../context/ColorBlindContext';
 import CustomButton from './ui/CustomButton';
 import FloatingPanel, { FloatingPanelRef } from './ui/FloatingPanel';
 import chroma from 'chroma-js';
@@ -20,6 +22,8 @@ const ColorControls = forwardRef<ColorControlsRef, ColorControlsProps>(({
     onOpenChange
 }, ref) => {
     const { palette, setPalette } = useColors();
+    const { font } = useFont();
+    const { selectedType } = useColorBlind();
     const panelRef = React.useRef<FloatingPanelRef>(null);
     const [selectedColorKey, setSelectedColorKey] = useState<string | null>(null);
     const [suggestions, setSuggestions] = useState<{ [key: string]: string[] }>({});
@@ -122,12 +126,10 @@ const ColorControls = forwardRef<ColorControlsRef, ColorControlsProps>(({
     return (
         <FloatingPanel
             ref={panelRef}
-            title="Color Selector"
+            title="Sélecteur de Couleurs"
             icon="🎨"
             position="top-right"
-            closedMessage="Active selector - Click 'Open' to configure"
-            isActive={true}
-            showPulse={true}
+            closedMessage="Sélecteur actif - Cliquez pour configurer"
             isOpen={isOpen}
             onOpenChange={onOpenChange}
         >

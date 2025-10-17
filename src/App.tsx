@@ -17,6 +17,8 @@ import ControlPanelsWrapper from './components/ControlPanelsWrapper';
 import GlobalSidebarMenu from './components/GlobalSidebarMenu';
 import Breadcrumb from './components/Breadcrumb';
 import BreadcrumbProvider from './components/ui/BreadcrumbProvider';
+import useScrollToTop from './hooks/useScrollToTop';
+import { usePanelsState } from './context/PanelsStateContext';
 
 // Composant pour tracker les changements de route
 const RouteChangeTracker = () => {
@@ -32,6 +34,42 @@ const RouteChangeTracker = () => {
   return null;
 };
 
+// Composant interne qui utilise le contexte
+const AppContent: React.FC = () => {
+  // Scroll vers le haut à chaque changement de page
+  useScrollToTop();
+  const { isSidebarVisible } = usePanelsState();
+
+  return (
+    <>
+      <BreadcrumbProvider>
+        <RouteChangeTracker />
+        <ControlPanelsWrapper />
+        <GlobalSidebarMenu />
+        <div
+          id="app-content"
+          style={{
+            marginLeft: isSidebarVisible ? '300px' : '0',
+            transition: 'margin-left 0.3s ease',
+            minHeight: '100vh'
+          }}
+          className="app-content"
+        >
+          <Routes>
+            <Route path="/" element={<Navigate to="/color" />} />
+            <Route path="/color" element={<Color />} />
+            <Route path="/typo" element={<Typo />} />
+            <Route path="/smart-palette" element={<SmartPalette />} />
+            <Route path="/rgaa-lab" element={<RGAALab />} />
+            <Route path="/design-system" element={<DesignSystem />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </BreadcrumbProvider>
+    </>
+  );
+};
+
 const App: React.FC = () => {
   return (
     <ColorProvider>
@@ -39,22 +77,7 @@ const App: React.FC = () => {
         <ColorBlindProvider>
           <ControlPanelsProvider>
             <PanelsStateProvider>
-              <BreadcrumbProvider>
-                <RouteChangeTracker />
-                <ControlPanelsWrapper />
-                <GlobalSidebarMenu />
-                <div id="app-content" style={{ marginLeft: '300px' }}>
-                  <Routes>
-                    <Route path="/" element={<Navigate to="/color" />} />
-                    <Route path="/color" element={<Color />} />
-                    <Route path="/typo" element={<Typo />} />
-                    <Route path="/smart-palette" element={<SmartPalette />} />
-                    <Route path="/rgaa-lab" element={<RGAALab />} />
-                    <Route path="/design-system" element={<DesignSystem />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </div>
-              </BreadcrumbProvider>
+              <AppContent />
             </PanelsStateProvider>
           </ControlPanelsProvider>
         </ColorBlindProvider>

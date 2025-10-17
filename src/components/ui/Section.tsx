@@ -29,7 +29,6 @@ const Section: React.FC<SectionProps> = ({
             role={role}
             aria-label={ariaLabel}
             style={{
-                marginBottom: '3rem',
                 ...style
             }}
         >

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useColors } from '../context/ColorContext';
+import { useFont } from '../context/FontContext';
+import { useColorBlind } from '../context/ColorBlindContext';
+import { usePanelsState } from '../context/PanelsStateContext';
 
 interface MenuItem {
     id: string;
@@ -17,9 +20,12 @@ interface PageMenuConfig {
 
 const GlobalSidebarMenu: React.FC = () => {
     const { palette } = useColors();
+    const { font } = useFont();
+    const { selectedType } = useColorBlind();
+    const { isSidebarVisible, setIsSidebarVisible } = usePanelsState();
     const location = useLocation();
     const [activeSection, setActiveSection] = useState('');
-    const [isVisible, setIsVisible] = useState(true); // Par défaut visible comme Notion
+    const [isMobile, setIsMobile] = useState(false);
     // Déterminer quelle section ouvrir selon la page actuelle
     const getInitialExpandedSections = () => {
         const baseSections = new Set(['navigation']);
@@ -41,6 +47,20 @@ const GlobalSidebarMenu: React.FC = () => {
     };
 
     const [expandedSections, setExpandedSections] = useState<Set<string>>(getInitialExpandedSections());
+
+    // Détecter si on est sur mobile
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+            if (window.innerWidth <= 768) {
+                setIsSidebarVisible(false);
+            }
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, [setIsSidebarVisible]);
 
     // Configuration des menus par page
     const pageMenus: PageMenuConfig = {
@@ -66,11 +86,11 @@ const GlobalSidebarMenu: React.FC = () => {
         ],
         '/typo': [
             { id: 'overview', label: 'Vue d\'ensemble', href: '#overview', icon: '' },
-            { id: 'font-selector', label: 'Sélecteur de polices', href: '#font-selector', icon: '' },
-            { id: 'readability', label: 'Lisibilité', href: '#readability', icon: '' },
-            { id: 'accessibility', label: 'Accessibilité', href: '#accessibility', icon: '' },
-            { id: 'preview', label: 'Aperçu', href: '#preview', icon: '' },
-            { id: 'export', label: 'Export', href: '#export', icon: '' }
+            { id: 'typography-tools', label: 'Outils de Typographie', href: '#typography-tools', icon: '' },
+            { id: 'compliance-checker', label: 'Vérificateur WCAG', href: '#compliance-checker', icon: '' },
+            { id: 'education', label: 'Informations Police', href: '#education', icon: '' },
+            { id: 'playground', label: 'Playground', href: '#playground', icon: '' },
+            { id: 'faq', label: 'Questions fréquentes', href: '#faq', icon: '' }
         ],
         '/smart-palette': [
             { id: 'overview', label: 'Vue d\'ensemble', href: '#overview', icon: '' },
@@ -114,59 +134,14 @@ const GlobalSidebarMenu: React.FC = () => {
             label: 'Typographie',
             href: '/typo',
             icon: '',
-            description: 'Test de typographie accessible',
+            description: 'Guide de bonnes pratiques typographiques',
             children: [
                 { id: 'typo-overview', label: 'Vue d\'ensemble', href: '/typo#overview', icon: '' },
-                { id: 'typo-font-selector', label: 'Sélecteur de polices', href: '/typo#font-selector', icon: '' },
-                { id: 'typo-readability', label: 'Lisibilité', href: '/typo#readability', icon: '' },
-                { id: 'typo-accessibility', label: 'Accessibilité', href: '/typo#accessibility', icon: '' },
-                { id: 'typo-preview', label: 'Aperçu', href: '/typo#preview', icon: '' },
-                { id: 'typo-export', label: 'Export', href: '/typo#export', icon: '' }
-            ]
-        },
-        {
-            id: 'smart-palette',
-            label: 'Palette Intelligente',
-            href: '/smart-palette',
-            icon: '',
-            description: 'Générateur de palettes',
-            children: [
-                { id: 'palette-overview', label: 'Vue d\'ensemble', href: '/smart-palette#overview', icon: '' },
-                { id: 'palette-generator', label: 'Générateur', href: '/smart-palette#generator', icon: '' },
-                { id: 'palette-algorithms', label: 'Algorithmes', href: '/smart-palette#algorithms', icon: '' },
-                { id: 'palette-preview', label: 'Aperçu', href: '/smart-palette#preview', icon: '' },
-                { id: 'palette-export', label: 'Export', href: '/smart-palette#export', icon: '' }
-            ]
-        },
-        {
-            id: 'rgaa-lab',
-            label: 'Laboratoire RGAA',
-            href: '/rgaa-lab',
-            icon: '',
-            description: 'Laboratoire RGAA complet',
-            children: [
-                { id: 'rgaa-overview', label: 'Vue d\'ensemble', href: '/rgaa-lab#overview', icon: '' },
-                { id: 'rgaa-tests', label: 'Tests RGAA', href: '/rgaa-lab#tests', icon: '' },
-                { id: 'rgaa-color-tests', label: 'Tests couleurs', href: '/rgaa-lab#color-tests', icon: '' },
-                { id: 'rgaa-contrast-tests', label: 'Tests contraste', href: '/rgaa-lab#contrast-tests', icon: '' },
-                { id: 'rgaa-accessibility', label: 'Accessibilité', href: '/rgaa-lab#accessibility', icon: '' },
-                { id: 'rgaa-reports', label: 'Rapports', href: '/rgaa-lab#reports', icon: '' },
-                { id: 'rgaa-guidelines', label: 'Directives', href: '/rgaa-lab#guidelines', icon: '' }
-            ]
-        },
-        {
-            id: 'design-system',
-            label: 'Système de Design',
-            href: '/design-system',
-            icon: '',
-            description: 'Système de design RGAA',
-            children: [
-                { id: 'ds-overview', label: 'Vue d\'ensemble', href: '/design-system#overview', icon: '' },
-                { id: 'ds-colors', label: 'Couleurs', href: '/design-system#colors', icon: '' },
-                { id: 'ds-typography', label: 'Typographie', href: '/design-system#typography', icon: '' },
-                { id: 'ds-components', label: 'Composants', href: '/design-system#components', icon: '' },
-                { id: 'ds-tokens', label: 'Tokens', href: '/design-system#tokens', icon: '' },
-                { id: 'ds-guidelines', label: 'Directives', href: '/design-system#guidelines', icon: '' }
+                { id: 'typo-tools', label: 'Outils de Typographie', href: '/typo#typography-tools', icon: '' },
+                { id: 'typo-compliance', label: 'Vérificateur WCAG', href: '/typo#compliance-checker', icon: '' },
+                { id: 'typo-education', label: 'Informations Police', href: '/typo#education', icon: '' },
+                { id: 'typo-playground', label: 'Playground', href: '/typo#playground', icon: '' },
+                { id: 'typo-faq', label: 'Questions fréquentes', href: '/typo#faq', icon: '' }
             ]
         }
     ];
@@ -213,7 +188,7 @@ const GlobalSidebarMenu: React.FC = () => {
 
     // Toggle sidebar visibility
     const toggleSidebar = () => {
-        setIsVisible(!isVisible);
+        setIsSidebarVisible(!isSidebarVisible);
     };
 
     // Toggle section expansion
@@ -246,10 +221,21 @@ const GlobalSidebarMenu: React.FC = () => {
         }
     };
 
-    // Navigate to page
+    // Scroll to top when navigating to a new page
     const navigateToPage = (href: string) => {
-        window.location.href = href;
+        // Scroll vers le haut avant la navigation
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+
+        // Petite pause pour laisser le scroll se faire, puis navigation
+        setTimeout(() => {
+            window.location.href = href;
+        }, 100);
     };
+
 
     const renderMenuItem = (item: MenuItem, level: number = 0) => {
         const isActive = location.pathname === item.href || activeSection === item.id;
@@ -272,11 +258,12 @@ const GlobalSidebarMenu: React.FC = () => {
                         width: '100%',
                         padding: '6px 12px',
                         border: 'none',
-                        background: isActive ? '#f1f3f4' : 'transparent',
-                        color: isActive ? '#1a1a1a' : '#37352f',
+                        background: isActive ? `${palette.primary}15` : 'transparent',
+                        color: isActive ? palette.text : palette.text,
                         textAlign: 'left',
                         cursor: 'pointer',
                         fontSize: '14px',
+                        fontFamily: font,
                         fontWeight: isActive ? 500 : 400,
                         transition: 'all 0.1s ease',
                         display: 'flex',
@@ -288,7 +275,7 @@ const GlobalSidebarMenu: React.FC = () => {
                     }}
                     onMouseEnter={(e) => {
                         if (!isActive) {
-                            e.currentTarget.style.background = '#f1f3f4';
+                            e.currentTarget.style.background = `${palette.primary}10`;
                         }
                     }}
                     onMouseLeave={(e) => {
@@ -336,7 +323,7 @@ const GlobalSidebarMenu: React.FC = () => {
         <>
 
             {/* Bouton pour rouvrir le menu */}
-            {!isVisible && (
+            {!isSidebarVisible && (
                 <button
                     onClick={toggleSidebar}
                     style={{
@@ -344,19 +331,21 @@ const GlobalSidebarMenu: React.FC = () => {
                         top: '20px',
                         left: '20px',
                         zIndex: 1001,
-                        background: '#fff',
-                        border: '1px solid #e9e9e7',
+                        background: palette.surface,
+                        border: `1px solid ${palette.border}`,
                         borderRadius: '6px',
                         padding: '8px 12px',
                         cursor: 'pointer',
                         fontSize: '14px',
-                        color: '#37352f',
+                        color: palette.text,
+                        fontFamily: font,
                         boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
                         transition: 'all 0.2s ease',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '6px'
                     }}
+                    className="menu-toggle-button"
                     aria-label="Afficher le menu"
                     title="Afficher le menu"
                 >
@@ -370,23 +359,25 @@ const GlobalSidebarMenu: React.FC = () => {
                 style={{
                     position: 'fixed',
                     top: 0,
-                    left: isVisible ? '0' : '-300px',
+                    left: isSidebarVisible ? '0' : '-300px',
                     width: '300px',
                     height: '100vh',
-                    background: '#fafafa',
-                    borderRight: '1px solid #e9e9e7',
+                    background: palette.background,
+                    borderRight: `2px solid ${palette.border}`,
+                    boxShadow: isMobile ? '0 0 20px rgba(0,0,0,0.3)' : `2px 0 8px ${palette.primary}10`,
                     zIndex: 1000,
-                    transition: 'left 0.2s ease',
+                    transition: 'left 0.3s ease',
                     overflowY: 'auto',
                     display: 'flex',
-                    flexDirection: 'column'
+                    flexDirection: 'column',
+                    filter: selectedType !== 'none' ? `url(#colorblind-${selectedType})` : 'none'
                 }}
                 aria-label="Menu de navigation global"
             >
                 {/* Header */}
                 <div style={{
-                    background: '#fff',
-                    borderBottom: '1px solid #e9e9e7',
+                    background: palette.surface,
+                    borderBottom: `1px solid ${palette.border}`,
                     padding: '12px 16px',
                     flexShrink: 0,
                     display: 'flex',
@@ -411,13 +402,15 @@ const GlobalSidebarMenu: React.FC = () => {
                             <span style={{
                                 fontSize: '14px',
                                 fontWeight: 600,
-                                color: '#1a1a1a'
+                                color: palette.text,
+                                fontFamily: font
                             }}>
-                                TestMyColor
+                                Test<span style={{ color: palette.primary }}>My</span>Color
                             </span>
                             <div style={{
                                 fontSize: '12px',
-                                color: '#787774'
+                                color: palette.textSecondary,
+                                fontFamily: font
                             }}>
                                 {currentPageTitle}
                             </div>
@@ -441,12 +434,12 @@ const GlobalSidebarMenu: React.FC = () => {
                             transition: 'all 0.2s ease'
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.background = '#f1f3f4';
-                            e.currentTarget.style.color = '#37352f';
+                            e.currentTarget.style.background = `${palette.primary}10`;
+                            e.currentTarget.style.color = palette.text;
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.background = 'transparent';
-                            e.currentTarget.style.color = '#787774';
+                            e.currentTarget.style.color = palette.textSecondary;
                         }}
                         aria-label="Masquer le menu"
                         title="Masquer le menu"
@@ -464,7 +457,8 @@ const GlobalSidebarMenu: React.FC = () => {
                         padding: '4px 8px',
                         fontSize: '11px',
                         fontWeight: 600,
-                        color: '#787774',
+                        color: palette.textSecondary,
+                        fontFamily: font,
                         textTransform: 'uppercase',
                         letterSpacing: '0.5px',
                         marginBottom: '4px'
@@ -485,72 +479,26 @@ const GlobalSidebarMenu: React.FC = () => {
 
                 {/* Footer */}
                 <div style={{
-                    padding: '12px 16px',
-                    borderTop: '1px solid #e9e9e7',
+                    padding: '8px 16px',
+                    borderTop: `1px solid ${palette.border}`,
                     flexShrink: 0,
-                    background: '#fff'
+                    background: palette.surface
                 }}>
                     <div style={{
-                        fontSize: '11px',
-                        color: '#787774',
+                        fontSize: '10px',
+                        color: palette.text,
+                        fontFamily: font,
                         textAlign: 'center',
-                        marginBottom: '8px'
+                        opacity: 0.7
                     }}>
-                        Outil de test RGAA
-                    </div>
-                    <div style={{
-                        display: 'flex',
-                        gap: '4px',
-                        justifyContent: 'center'
-                    }}>
-                        <button
-                            onClick={() => navigateToPage('/rgaa-lab')}
-                            style={{
-                                padding: '4px 8px',
-                                fontSize: '11px',
-                                background: 'transparent',
-                                border: '1px solid #e9e9e7',
-                                borderRadius: '4px',
-                                color: '#37352f',
-                                cursor: 'pointer',
-                                transition: 'all 0.1s ease'
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.background = '#f1f3f4';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.background = 'transparent';
-                            }}
-                        >
-                            TestMyColor
-                        </button>
-                        <button
-                            onClick={() => navigateToPage('/typo')}
-                            style={{
-                                padding: '4px 8px',
-                                fontSize: '11px',
-                                background: 'transparent',
-                                border: '1px solid #e9e9e7',
-                                borderRadius: '4px',
-                                color: '#37352f',
-                                cursor: 'pointer',
-                                transition: 'all 0.1s ease'
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.background = '#f1f3f4';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.background = 'transparent';
-                            }}
-                        >
-                            Typo
-                        </button>
+                        TestMyColor © 2025<br />
+                        par OlivierLB
                     </div>
                 </div>
             </aside>
 
             {/* Overlay pour mobile */}
-            {isVisible && (
+            {isSidebarVisible && isMobile && (
                 <div
                     onClick={toggleSidebar}
                     style={{
@@ -560,21 +508,42 @@ const GlobalSidebarMenu: React.FC = () => {
                         right: 0,
                         bottom: 0,
                         background: 'rgba(0,0,0,0.5)',
-                        zIndex: 999,
-                        display: 'none' // Masqué sur desktop, visible sur mobile
+                        zIndex: 999
                     }}
                     className="sidebar-overlay"
                 />
             )}
 
-            {/* CSS pour mobile */}
+            {/* CSS pour responsive */}
             <style>{`
                 @media (max-width: 768px) {
-                    .sidebar-overlay {
-                        display: block !important;
+                    .app-content {
+                        margin-left: 0 !important;
+                    }
+                    
+                    .menu-toggle-button {
+                        display: none !important;
                     }
                 }
             `}</style>
+
+            {/* SVG Filters pour le daltonisme */}
+            <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+                <defs>
+                    <filter id="colorblind-protanopia">
+                        <feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0" />
+                    </filter>
+                    <filter id="colorblind-deuteranopia">
+                        <feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0" />
+                    </filter>
+                    <filter id="colorblind-tritanopia">
+                        <feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0" />
+                    </filter>
+                    <filter id="colorblind-achromatopsia">
+                        <feColorMatrix type="matrix" values="0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0.299,0.587,0.114,0,0 0,0,0,1,0" />
+                    </filter>
+                </defs>
+            </svg>
         </>
     );
 };

@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useColors } from '../../context/ColorContext';
 import { useFont } from '../../context/FontContext';
+import { usePanelsState } from '../../context/PanelsStateContext';
 import { NavLink } from 'react-router-dom';
+import CustomButton from './CustomButton';
 
-const Header = () => {
+const Header: React.FC = () => {
     const { palette } = useColors();
     const { font } = useFont();
+    const { isSidebarVisible, setIsSidebarVisible } = usePanelsState();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,6 +23,17 @@ const Header = () => {
         };
     }, []);
 
+    // Détecter si on est sur mobile
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     useEffect(() => {
         document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
         return () => {
@@ -27,11 +42,8 @@ const Header = () => {
     }, [isMobileMenuOpen]);
 
     const navLinks = [
-        { label: 'Colors', href: '/color' },
-        { label: 'Typography', href: '/typo' },
-        { label: 'Smart Palette', href: '/smart-palette' },
-        { label: 'Laboratoire RGAA', href: '/rgaa-lab' },
-        { label: 'Design System', href: '/design-system' }
+        { label: 'Couleurs', href: '/color' },
+        { label: 'Typographie', href: '/typo' }
     ];
 
     return (
@@ -99,7 +111,13 @@ const Header = () => {
 
             {/* Mobile hamburger */}
             <button
-                onClick={() => setIsMobileMenuOpen(true)}
+                onClick={() => {
+                    if (isMobile) {
+                        setIsSidebarVisible(!isSidebarVisible);
+                    } else {
+                        setIsMobileMenuOpen(true);
+                    }
+                }}
                 style={{
                     background: 'none',
                     border: 'none',
@@ -110,7 +128,7 @@ const Header = () => {
                     fontFamily: 'inherit'
                 }}
                 className="mobile-menu-button"
-                aria-label="Open menu"
+                aria-label={isMobile ? "Ouvrir le menu" : "Ouvrir le menu mobile"}
             >
                 ☰
             </button>
@@ -148,7 +166,7 @@ const Header = () => {
                             cursor: 'pointer',
                             fontFamily: 'inherit'
                         }}
-                        aria-label="Close menu"
+                        aria-label="Fermer le menu"
                     >
                         ✕
                     </button>
