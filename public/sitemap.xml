@@ -29,56 +29,5 @@
     </image:image>
   </url>
 
-  <!-- RGAA Lab -->
-  <url>
-    <loc>https://testmycolor.com/rgaa-lab</loc>
-    <lastmod>2025-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://testmycolor.com/android-chrome-512x512.png</image:loc>
-      <image:title>RGAA Lab 2025 - Laboratoire Accessibilité Web Français</image:title>
-      <image:caption>RGAA Lab 2025 - Laboratoire complet d'accessibilité web français. Tests RGAA 4.1, WCAG 2.1, couleurs, contrastes, navigation clavier</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Typographie -->
-  <url>
-    <loc>https://testmycolor.com/typo</loc>
-    <lastmod>2025-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://testmycolor.com/android-chrome-512x512.png</image:loc>
-      <image:title>Guide Typographie Accessible 2025 - Bonnes Pratiques WCAG &amp; Lisibilité</image:title>
-      <image:caption>Guide complet de typographie accessible avec bonnes pratiques WCAG 2.1. Testez la lisibilité, contraste et accessibilité de vos polices</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Design System -->
-  <url>
-    <loc>https://testmycolor.com/design-system</loc>
-    <lastmod>2025-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://testmycolor.com/android-chrome-512x512.png</image:loc>
-      <image:title>Design System RGAA 2025 - Composants Accessibles Français</image:title>
-      <image:caption>Design System RGAA 2025 - Composants UI accessibles conformes WCAG 2.1 et RGAA 4.1. Boutons, cartes, inputs, tokens de design</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Smart Palette -->
-  <url>
-    <loc>https://testmycolor.com/smart-palette</loc>
-    <lastmod>2025-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://testmycolor.com/android-chrome-512x512.png</image:loc>
-      <image:title>Générateur Palettes RGAA 2025 - Créateur Couleurs Accessibles</image:title>
-      <image:caption>Générateur intelligent de palettes de couleurs RGAA 2025. Créez des palettes accessibles conformes WCAG 2.1 AA/AAA automatiquement</image:caption>
-    </image:image>
-  </url>
 
 </urlset> 
