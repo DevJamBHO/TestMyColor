@@ -56,7 +56,7 @@ const ColorSEO: React.FC = () => {
             "@type": "WebApplication",
             "name": "TestMyColor - Testeur RGAA Couleurs 2025",
             "description": "Testeur RGAA 4.1 gratuit pour couleurs et contrastes. Vérifiez instantanément la conformité WCAG 2.1 AA/AAA de vos palettes. Outil français d'accessibilité web avec simulation daltonisme.",
-            "url": "https://testmycolor.com/color",
+            "url": "https://test-my-color.com/color",
             "applicationCategory": "DesignApplication",
             "operatingSystem": "Web",
             "browserRequirements": "Requires JavaScript. Requires HTML5.",
@@ -100,7 +100,7 @@ const ColorSEO: React.FC = () => {
             "creator": {
                 "@type": "Organization",
                 "name": "TestMyColor",
-                "url": "https://testmycolor.com"
+                "url": "https://test-my-color.com"
             },
             "about": {
                 "@type": "Thing",
@@ -165,11 +165,11 @@ const ColorSEO: React.FC = () => {
         // Add canonical URL for color page
         const canonical = document.querySelector('link[rel="canonical"]');
         if (canonical) {
-            canonical.setAttribute('href', 'https://testmycolor.com/color');
+            canonical.setAttribute('href', 'https://test-my-color.com/color');
         } else {
             const link = document.createElement('link');
             link.rel = 'canonical';
-            link.href = 'https://testmycolor.com/color';
+            link.href = 'https://test-my-color.com/color';
             document.head.appendChild(link);
         }
 
