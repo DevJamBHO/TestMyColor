@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
 import { useColors } from '../context/ColorContext';
-import { useFont } from '../context/FontContext';
 
-const TypographySEO: React.FC = () => {
+const DesignSystemSEO: React.FC = () => {
     const { palette } = useColors();
-    const { font } = useFont();
 
     useEffect(() => {
         // Update page title
-        document.title = 'Guide Typographie Accessible 2025 - Bonnes Pratiques WCAG & Lisibilité | TestMyColor';
+        document.title = 'Design System RGAA 2025 - Composants Accessibles Français | TestMyColor';
 
         // Update meta description
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
             metaDescription.setAttribute('content',
-                'Guide complet de typographie accessible avec bonnes pratiques WCAG 2.1. Testez la lisibilité, contraste et accessibilité de vos polices. Outil gratuit pour designers et développeurs. Conformité WCAG AA/AAA incluse.'
+                'Design System RGAA 2025 - Composants UI accessibles conformes WCAG 2.1 et RGAA 4.1. Boutons, cartes, inputs, tokens de design. Système complet pour créer des interfaces inclusives et conformes aux standards français d\'accessibilité.'
             );
         }
 
@@ -22,88 +20,88 @@ const TypographySEO: React.FC = () => {
         const metaKeywords = document.querySelector('meta[name="keywords"]');
         if (metaKeywords) {
             metaKeywords.setAttribute('content',
-                'typographie accessible, guide typographie, bonnes pratiques accessibilité, WCAG 2.1 AA AAA, test lisibilité polices, accessibilité web, testeur typographie gratuit, polices accessibles, contraste ratio, typography accessibility, accessibilité numérique, design inclusif, lisibilité web, police accessible, taille police, espacement lettres, hauteur ligne, contraste texte, guide typo, bonnes pratiques typo, accessibilité typographique'
+                'design system RGAA, composants accessibles, design system français, composants UI RGAA, design system WCAG, composants conformes RGAA, design system inclusif, composants accessibles français, design system gratuit, composants UI accessibles, design system open source, composants conformes WCAG, design system 2025, composants RGAA 4.1, design system professionnel, composants accessibilité, design system français, composants UI conformes, design system web, composants inclusifs'
             );
         }
 
         // Update Open Graph tags
         const ogTitle = document.querySelector('meta[property="og:title"]');
         if (ogTitle) {
-            ogTitle.setAttribute('content', 'Guide Typographie Accessible 2025 - Bonnes Pratiques WCAG & Lisibilité');
+            ogTitle.setAttribute('content', 'Design System RGAA 2025 - Composants Accessibles Français');
         }
 
         const ogDescription = document.querySelector('meta[property="og:description"]');
         if (ogDescription) {
             ogDescription.setAttribute('content',
-                'Guide complet de typographie accessible avec bonnes pratiques WCAG 2.1. Testez la lisibilité, contraste et accessibilité de vos polices. Outil gratuit pour designers et développeurs.'
+                'Design System RGAA 2025 - Composants UI accessibles conformes WCAG 2.1 et RGAA 4.1. Boutons, cartes, inputs, tokens de design. Système complet pour créer des interfaces inclusives.'
             );
         }
 
         // Update Twitter tags
         const twitterTitle = document.querySelector('meta[name="twitter:title"]');
         if (twitterTitle) {
-            twitterTitle.setAttribute('content', 'Guide Typographie Accessible 2025 - Bonnes Pratiques WCAG & Lisibilité');
+            twitterTitle.setAttribute('content', 'Design System RGAA 2025 - Composants Accessibles Français');
         }
 
         const twitterDescription = document.querySelector('meta[name="twitter:description"]');
         if (twitterDescription) {
             twitterDescription.setAttribute('content',
-                'Guide complet de typographie accessible avec bonnes pratiques WCAG 2.1. Testez la lisibilité, contraste et accessibilité de vos polices.'
+                'Design System RGAA 2025 - Composants UI accessibles conformes WCAG 2.1 et RGAA 4.1. Boutons, cartes, inputs, tokens de design.'
             );
         }
 
-        // Add structured data for Typography Accessibility Guide
+        // Add structured data for Design System
         const structuredData = {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "TestMyColor - Guide Typographie Accessible 2025",
-            "description": "Guide complet de typographie accessible avec bonnes pratiques WCAG 2.1. Testez la lisibilité, contraste et accessibilité de vos polices. Outil gratuit pour designers et développeurs.",
-            "url": "https://testmycolor.com/typo",
+            "name": "TestMyColor - Design System RGAA 2025",
+            "description": "Design System RGAA 2025 - Composants UI accessibles conformes WCAG 2.1 et RGAA 4.1. Boutons, cartes, inputs, tokens de design. Système complet pour créer des interfaces inclusives et conformes aux standards français d'accessibilité.",
+            "url": "https://testmycolor.com/design-system",
             "applicationCategory": "DesignApplication",
             "operatingSystem": "Web",
             "browserRequirements": "Requires JavaScript. Requires HTML5.",
             "inLanguage": ["fr", "en"],
             "keywords": [
-                "typographie accessible",
-                "guide typographie",
-                "bonnes pratiques accessibilité",
-                "WCAG 2.1 AA AAA",
-                "test lisibilité polices",
-                "accessibilité web",
-                "testeur typographie gratuit",
-                "polices accessibles",
-                "contraste ratio",
-                "typography accessibility",
-                "accessibilité numérique",
-                "design inclusif",
-                "lisibilité web",
-                "police accessible",
-                "taille police",
-                "espacement lettres",
-                "hauteur ligne",
-                "contraste texte",
-                "guide typo",
-                "bonnes pratiques typo",
-                "accessibilité typographique"
+                "design system RGAA",
+                "composants accessibles",
+                "design system français",
+                "composants UI RGAA",
+                "design system WCAG",
+                "composants conformes RGAA",
+                "design system inclusif",
+                "composants accessibles français",
+                "design system gratuit",
+                "composants UI accessibles",
+                "design system open source",
+                "composants conformes WCAG",
+                "design system 2025",
+                "composants RGAA 4.1",
+                "design system professionnel",
+                "composants accessibilité",
+                "design system français",
+                "composants UI conformes",
+                "design system web",
+                "composants inclusifs"
             ],
             "featureList": [
-                "Guide complet de bonnes pratiques typographiques",
-                "Test de lisibilité en temps réel",
-                "Validation WCAG 2.1 AA et AAA pour typographie",
-                "Sélection de polices accessibles",
-                "Test de contraste texte/fond",
-                "Export de styles typographiques (CSS, JSON)",
-                "Bonnes pratiques d'accessibilité web",
-                "Test de lisibilité gratuit",
-                "Outil d'accessibilité web",
-                "Critères WCAG 2.1 pour typographie",
-                "Validation accessibilité numérique",
-                "Test de taille de police",
-                "Vérification espacement des lettres",
-                "Contrôle hauteur de ligne",
-                "Test de contraste avancé",
-                "Guide des polices recommandées",
-                "Conseils d'accessibilité typographique"
+                "Composants boutons accessibles RGAA",
+                "Cartes conformes WCAG 2.1",
+                "Champs de saisie accessibles",
+                "Tokens de design inclusifs",
+                "Système de couleurs RGAA",
+                "Typographie accessible",
+                "Espacements cohérents",
+                "Composants adaptatifs",
+                "Validation accessibilité automatique",
+                "Documentation complète",
+                "Exemples d'utilisation",
+                "Tests de conformité RGAA",
+                "Export CSS/SCSS",
+                "Composants React/TypeScript",
+                "Design system modulaire",
+                "Composants réutilisables",
+                "Conformité RGAA 4.1",
+                "Standards français d'accessibilité"
             ],
             "offers": {
                 "@type": "Offer",
@@ -117,8 +115,8 @@ const TypographySEO: React.FC = () => {
             },
             "about": {
                 "@type": "Thing",
-                "name": "Accessibilité Web Typographie",
-                "description": "Bonnes pratiques d'accessibilité et conformité WCAG pour la typographie et la lisibilité"
+                "name": "Design System Accessible",
+                "description": "Système de design complet pour créer des interfaces accessibles et conformes RGAA"
             }
         };
 
@@ -134,7 +132,7 @@ const TypographySEO: React.FC = () => {
         script.textContent = JSON.stringify(structuredData);
         document.head.appendChild(script);
 
-        // Add additional meta tags for RGAA Typography
+        // Add additional meta tags for Design System
         const additionalMetaTags = [
             { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
             { name: 'googlebot', content: 'index, follow' },
@@ -150,17 +148,17 @@ const TypographySEO: React.FC = () => {
             { property: 'og:locale', content: 'fr_FR' },
             { property: 'article:author', content: 'TestMyColor' },
             { property: 'article:section', content: 'Accessibilité Web' },
-            { property: 'article:tag', content: 'WCAG' },
-            { property: 'article:tag', content: 'Typographie' },
-            { property: 'article:tag', content: 'Lisibilité' },
+            { property: 'article:tag', content: 'Design System' },
+            { property: 'article:tag', content: 'Composants' },
+            { property: 'article:tag', content: 'RGAA' },
             { property: 'article:tag', content: 'Accessibilité' },
-            { property: 'article:tag', content: 'Bonnes Pratiques' },
+            { property: 'article:tag', content: 'UI' },
             { name: 'twitter:site', content: '@testmycolor' },
             { name: 'twitter:creator', content: '@testmycolor' },
             { name: 'twitter:label1', content: 'Type' },
-            { name: 'twitter:data1', content: 'Guide Typographie Accessible' },
+            { name: 'twitter:data1', content: 'Design System RGAA' },
             { name: 'twitter:label2', content: 'Conformité' },
-            { name: 'twitter:data2', content: 'WCAG 2.1 AA/AAA' }
+            { name: 'twitter:data2', content: 'WCAG 2.1 & RGAA 4.1' }
         ];
 
         additionalMetaTags.forEach(tag => {
@@ -176,14 +174,14 @@ const TypographySEO: React.FC = () => {
             }
         });
 
-        // Add canonical URL for typo page
+        // Add canonical URL for design system page
         const canonical = document.querySelector('link[rel="canonical"]');
         if (canonical) {
-            canonical.setAttribute('href', 'https://testmycolor.com/typo');
+            canonical.setAttribute('href', 'https://testmycolor.com/design-system');
         } else {
             const link = document.createElement('link');
             link.rel = 'canonical';
-            link.href = 'https://testmycolor.com/typo';
+            link.href = 'https://testmycolor.com/design-system';
             document.head.appendChild(link);
         }
 
@@ -196,62 +194,67 @@ const TypographySEO: React.FC = () => {
                     "mainEntity": [
                         {
                             "@type": "Question",
-                            "name": "Qu'est-ce que l'accessibilité typographique ?",
+                            "name": "Qu'est-ce qu'un design system RGAA ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "L'accessibilité typographique concerne la lisibilité et l'accessibilité des polices de caractères. Elle inclut la taille des polices, l'espacement des lettres, la hauteur de ligne, et le contraste entre le texte et l'arrière-plan. Ces bonnes pratiques sont essentielles pour garantir l'accessibilité visuelle selon WCAG 2.1."
+                                "text": "Un design system RGAA est un ensemble de composants UI, de tokens de design et de guidelines qui respectent les critères d'accessibilité français (RGAA 4.1) et internationaux (WCAG 2.1). Il garantit la cohérence et l'accessibilité de vos interfaces utilisateur."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Quelle est la taille de police recommandée pour l'accessibilité ?",
+                            "name": "Quels composants sont inclus dans ce design system ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Les bonnes pratiques recommandent une taille de police d'au moins 16px (ou 1.2em) pour le texte normal. Pour les textes importants, une taille de 18px (ou 1.5em) est recommandée. Ces tailles garantissent une lisibilité optimale pour tous les utilisateurs, y compris ceux avec des déficiences visuelles."
+                                "text": "Le design system inclut des boutons accessibles, des cartes conformes WCAG, des champs de saisie avec validation, des tokens de couleurs RGAA, une typographie accessible, des espacements cohérents, et des composants adaptatifs. Tous sont testés pour la conformité RGAA 4.1."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Comment tester la lisibilité de mes polices ?",
+                            "name": "Comment utiliser ce design system dans mes projets ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Notre outil vous permet de tester la lisibilité de vos polices en temps réel. Vous pouvez ajuster la taille, l'espacement des lettres, la hauteur de ligne et voir immédiatement l'impact sur l'accessibilité. Des tests de contraste WCAG sont également disponibles."
+                                "text": "Le design system est modulaire et réutilisable. Vous pouvez copier les composants, adapter les tokens de design, et intégrer les styles CSS/SCSS dans vos projets. Chaque composant inclut la documentation d'utilisation et les exemples de code."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Quelles polices sont les plus accessibles ?",
+                            "name": "Le design system est-il conforme aux standards français ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Les polices sans-serif comme Arial, Helvetica, ou Open Sans sont généralement plus accessibles. Les polices avec des caractères bien différenciés et un espacement approprié sont préférables. Notre guide vous aide à identifier les polices les plus adaptées selon les bonnes pratiques d'accessibilité."
+                                "text": "Oui, le design system respecte intégralement le RGAA 4.1 français et les WCAG 2.1 niveau AA et AAA. Tous les composants sont testés pour l'accessibilité et incluent les attributs ARIA nécessaires pour les technologies d'assistance."
                             }
                         }
                     ]
                 },
                 {
                     "@type": "HowTo",
-                    "name": "Comment optimiser l'accessibilité de votre typographie",
-                    "description": "Guide complet des bonnes pratiques d'accessibilité typographique",
+                    "name": "Comment implémenter le design system RGAA dans votre projet",
+                    "description": "Guide complet pour intégrer le design system accessible dans vos projets",
                     "step": [
                         {
                             "@type": "HowToStep",
-                            "name": "Sélectionnez votre police",
-                            "text": "Utilisez le sélecteur de polices pour choisir votre typographie"
+                            "name": "Explorez les composants",
+                            "text": "Découvrez tous les composants disponibles dans le design system"
                         },
                         {
                             "@type": "HowToStep",
-                            "name": "Testez la lisibilité",
-                            "text": "Vérifiez automatiquement la conformité RGAA de votre typographie"
+                            "name": "Copiez les styles",
+                            "text": "Intégrez les styles CSS/SCSS dans votre projet"
                         },
                         {
                             "@type": "HowToStep",
-                            "name": "Ajustez les paramètres",
-                            "text": "Modifiez la taille, l'espacement et la hauteur de ligne si nécessaire"
+                            "name": "Adaptez les tokens",
+                            "text": "Personnalisez les couleurs, typographie et espacements selon vos besoins"
                         },
                         {
                             "@type": "HowToStep",
-                            "name": "Exportez vos styles",
-                            "text": "Générez le code CSS de votre typographie conforme RGAA"
+                            "name": "Testez l'accessibilité",
+                            "text": "Validez la conformité RGAA de vos implémentations"
+                        },
+                        {
+                            "@type": "HowToStep",
+                            "name": "Documentez votre usage",
+                            "text": "Créez votre propre documentation basée sur le design system"
                         }
                     ]
                 }
@@ -269,9 +272,9 @@ const TypographySEO: React.FC = () => {
             const scripts = document.querySelectorAll('script[type="application/ld+json"]');
             scripts.forEach(script => script.remove());
         };
-    }, [palette, font]);
+    }, [palette]);
 
     return null; // This component doesn't render anything
 };
 
-export default TypographySEO;
+export default DesignSystemSEO;

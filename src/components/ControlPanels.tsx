@@ -2,6 +2,7 @@ import React, { forwardRef, useImperativeHandle, useRef, useEffect } from 'react
 import ColorControls, { ColorControlsRef } from './ColorControls';
 import ColorBlindControls, { ColorBlindControlsRef } from './ColorBlindControls';
 import TypographyControls, { TypographyControlsRef } from './TypographyControls';
+import { trackToolUsage, AnalyticsEvents } from '../utils/analytics';
 
 export interface ControlPanelsRef {
     openColorControls: () => void;
@@ -38,18 +39,21 @@ const ControlPanels = forwardRef<ControlPanelsRef, ControlPanelsProps>(({
         setColorBlindControlsOpen(false);
         setTypographyControlsOpen(false);
         colorControlsRef.current?.open();
+        trackToolUsage('Color Controls', 'Opened', { panel: 'Floating' });
     };
 
     const openColorBlindControls = () => {
         setColorControlsOpen(false);
         setTypographyControlsOpen(false);
         colorBlindControlsRef.current?.open();
+        trackToolUsage('Colorblind Simulation', 'Opened', { panel: 'Floating' });
     };
 
     const openTypographyControls = () => {
         setColorControlsOpen(false);
         setColorBlindControlsOpen(false);
         typographyControlsRef.current?.open();
+        trackToolUsage('Typography Controls', 'Opened', { panel: 'Floating' });
     };
 
     // Fonctions pour gérer l'ouverture avec fermeture automatique des autres
@@ -57,6 +61,9 @@ const ControlPanels = forwardRef<ControlPanelsRef, ControlPanelsProps>(({
         if (isOpen) {
             setColorBlindControlsOpen(false);
             setTypographyControlsOpen(false);
+            trackToolUsage('Color Controls', 'Opened', { panel: 'Floating' });
+        } else {
+            trackToolUsage('Color Controls', 'Closed', { panel: 'Floating' });
         }
         setColorControlsOpen(isOpen);
     };
@@ -65,6 +72,9 @@ const ControlPanels = forwardRef<ControlPanelsRef, ControlPanelsProps>(({
         if (isOpen) {
             setColorControlsOpen(false);
             setTypographyControlsOpen(false);
+            trackToolUsage('Colorblind Simulation', 'Opened', { panel: 'Floating' });
+        } else {
+            trackToolUsage('Colorblind Simulation', 'Closed', { panel: 'Floating' });
         }
         setColorBlindControlsOpen(isOpen);
     };
@@ -73,6 +83,9 @@ const ControlPanels = forwardRef<ControlPanelsRef, ControlPanelsProps>(({
         if (isOpen) {
             setColorControlsOpen(false);
             setColorBlindControlsOpen(false);
+            trackToolUsage('Typography Controls', 'Opened', { panel: 'Floating' });
+        } else {
+            trackToolUsage('Typography Controls', 'Closed', { panel: 'Floating' });
         }
         setTypographyControlsOpen(isOpen);
     };

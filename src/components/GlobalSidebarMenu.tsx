@@ -4,6 +4,7 @@ import { useColors } from '../context/ColorContext';
 import { useFont } from '../context/FontContext';
 import { useColorBlind } from '../context/ColorBlindContext';
 import { usePanelsState } from '../context/PanelsStateContext';
+import { trackToolUsage, AnalyticsEvents } from '../utils/analytics';
 
 interface MenuItem {
     id: string;
@@ -223,6 +224,12 @@ const GlobalSidebarMenu: React.FC = () => {
 
     // Scroll to top when navigating to a new page
     const navigateToPage = (href: string) => {
+        // Track menu navigation
+        trackToolUsage('Navigation', 'Menu Clicked', {
+            href,
+            page: currentPage
+        });
+
         // Scroll vers le haut avant la navigation
         window.scrollTo({
             top: 0,

@@ -6,7 +6,7 @@ const ColorSEO: React.FC = () => {
 
     useEffect(() => {
         // Update page title
-        document.title = 'Testeur RGAA Couleurs 2024 - Contraste WCAG 2.1 AA/AAA | TestMyColor';
+        document.title = 'Testeur RGAA Couleurs 2025 - Contraste WCAG 2.1 AA/AAA | TestMyColor';
 
         // Update meta description
         const metaDescription = document.querySelector('meta[name="description"]');
@@ -27,7 +27,7 @@ const ColorSEO: React.FC = () => {
         // Update Open Graph tags
         const ogTitle = document.querySelector('meta[property="og:title"]');
         if (ogTitle) {
-            ogTitle.setAttribute('content', 'Testeur RGAA Couleurs 2024 - Contraste WCAG 2.1 AA/AAA');
+            ogTitle.setAttribute('content', 'Testeur RGAA Couleurs 2025 - Contraste WCAG 2.1 AA/AAA');
         }
 
         const ogDescription = document.querySelector('meta[property="og:description"]');
@@ -40,7 +40,7 @@ const ColorSEO: React.FC = () => {
         // Update Twitter tags
         const twitterTitle = document.querySelector('meta[name="twitter:title"]');
         if (twitterTitle) {
-            twitterTitle.setAttribute('content', 'Testeur RGAA Couleurs 2024 - Contraste WCAG 2.1 AA/AAA');
+            twitterTitle.setAttribute('content', 'Testeur RGAA Couleurs 2025 - Contraste WCAG 2.1 AA/AAA');
         }
 
         const twitterDescription = document.querySelector('meta[name="twitter:description"]');
@@ -54,7 +54,7 @@ const ColorSEO: React.FC = () => {
         const structuredData = {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "TestMyColor - Testeur RGAA Couleurs 2024",
+            "name": "TestMyColor - Testeur RGAA Couleurs 2025",
             "description": "Testeur RGAA 4.1 gratuit pour couleurs et contrastes. Vérifiez instantanément la conformité WCAG 2.1 AA/AAA de vos palettes. Outil français d'accessibilité web avec simulation daltonisme.",
             "url": "https://testmycolor.com/color",
             "applicationCategory": "DesignApplication",

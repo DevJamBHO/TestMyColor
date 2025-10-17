@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
 import { useColors } from '../context/ColorContext';
-import { useFont } from '../context/FontContext';
 
-const TypographySEO: React.FC = () => {
+const RGAALabSEO: React.FC = () => {
     const { palette } = useColors();
-    const { font } = useFont();
 
     useEffect(() => {
         // Update page title
-        document.title = 'Guide Typographie Accessible 2025 - Bonnes Pratiques WCAG & Lisibilité | TestMyColor';
+        document.title = 'RGAA Lab 2025 - Laboratoire Accessibilité Web Français | TestMyColor';
 
         // Update meta description
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
             metaDescription.setAttribute('content',
-                'Guide complet de typographie accessible avec bonnes pratiques WCAG 2.1. Testez la lisibilité, contraste et accessibilité de vos polices. Outil gratuit pour designers et développeurs. Conformité WCAG AA/AAA incluse.'
+                'RGAA Lab 2025 - Laboratoire complet d\'accessibilité web français. Tests RGAA 4.1, WCAG 2.1, couleurs, contrastes, navigation clavier, lecture d\'écran. Outil gratuit pour conformité accessibilité numérique française.'
             );
         }
 
@@ -22,88 +20,92 @@ const TypographySEO: React.FC = () => {
         const metaKeywords = document.querySelector('meta[name="keywords"]');
         if (metaKeywords) {
             metaKeywords.setAttribute('content',
-                'typographie accessible, guide typographie, bonnes pratiques accessibilité, WCAG 2.1 AA AAA, test lisibilité polices, accessibilité web, testeur typographie gratuit, polices accessibles, contraste ratio, typography accessibility, accessibilité numérique, design inclusif, lisibilité web, police accessible, taille police, espacement lettres, hauteur ligne, contraste texte, guide typo, bonnes pratiques typo, accessibilité typographique'
+                'RGAA Lab, RGAA 4.1, laboratoire accessibilité, tests RGAA gratuits, conformité accessibilité française, WCAG 2.1 AA AAA, tests couleurs RGAA, navigation clavier, lecture écran, accessibilité web française, outil RGAA gratuit, validation accessibilité, critères RGAA, test conformité RGAA, accessibilité numérique, design inclusif, tests accessibilité, simulateur daltonisme, contraste ratio, validation RGAA, outil accessibilité web, laboratoire RGAA, tests complets RGAA, conformité numérique française'
             );
         }
 
         // Update Open Graph tags
         const ogTitle = document.querySelector('meta[property="og:title"]');
         if (ogTitle) {
-            ogTitle.setAttribute('content', 'Guide Typographie Accessible 2025 - Bonnes Pratiques WCAG & Lisibilité');
+            ogTitle.setAttribute('content', 'RGAA Lab 2025 - Laboratoire Accessibilité Web Français');
         }
 
         const ogDescription = document.querySelector('meta[property="og:description"]');
         if (ogDescription) {
             ogDescription.setAttribute('content',
-                'Guide complet de typographie accessible avec bonnes pratiques WCAG 2.1. Testez la lisibilité, contraste et accessibilité de vos polices. Outil gratuit pour designers et développeurs.'
+                'RGAA Lab 2025 - Laboratoire complet d\'accessibilité web français. Tests RGAA 4.1, WCAG 2.1, couleurs, contrastes, navigation clavier, lecture d\'écran. Outil gratuit pour conformité accessibilité numérique française.'
             );
         }
 
         // Update Twitter tags
         const twitterTitle = document.querySelector('meta[name="twitter:title"]');
         if (twitterTitle) {
-            twitterTitle.setAttribute('content', 'Guide Typographie Accessible 2025 - Bonnes Pratiques WCAG & Lisibilité');
+            twitterTitle.setAttribute('content', 'RGAA Lab 2025 - Laboratoire Accessibilité Web Français');
         }
 
         const twitterDescription = document.querySelector('meta[name="twitter:description"]');
         if (twitterDescription) {
             twitterDescription.setAttribute('content',
-                'Guide complet de typographie accessible avec bonnes pratiques WCAG 2.1. Testez la lisibilité, contraste et accessibilité de vos polices.'
+                'RGAA Lab 2025 - Laboratoire complet d\'accessibilité web français. Tests RGAA 4.1, WCAG 2.1, couleurs, contrastes, navigation clavier, lecture d\'écran.'
             );
         }
 
-        // Add structured data for Typography Accessibility Guide
+        // Add structured data for RGAA Lab
         const structuredData = {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "TestMyColor - Guide Typographie Accessible 2025",
-            "description": "Guide complet de typographie accessible avec bonnes pratiques WCAG 2.1. Testez la lisibilité, contraste et accessibilité de vos polices. Outil gratuit pour designers et développeurs.",
-            "url": "https://testmycolor.com/typo",
+            "name": "TestMyColor - RGAA Lab 2025",
+            "description": "RGAA Lab 2025 - Laboratoire complet d'accessibilité web français. Tests RGAA 4.1, WCAG 2.1, couleurs, contrastes, navigation clavier, lecture d'écran. Outil gratuit pour conformité accessibilité numérique française.",
+            "url": "https://testmycolor.com/rgaa-lab",
             "applicationCategory": "DesignApplication",
             "operatingSystem": "Web",
             "browserRequirements": "Requires JavaScript. Requires HTML5.",
             "inLanguage": ["fr", "en"],
             "keywords": [
-                "typographie accessible",
-                "guide typographie",
-                "bonnes pratiques accessibilité",
+                "RGAA Lab",
+                "RGAA 4.1",
+                "laboratoire accessibilité",
+                "tests RGAA gratuits",
+                "conformité accessibilité française",
                 "WCAG 2.1 AA AAA",
-                "test lisibilité polices",
-                "accessibilité web",
-                "testeur typographie gratuit",
-                "polices accessibles",
-                "contraste ratio",
-                "typography accessibility",
+                "tests couleurs RGAA",
+                "navigation clavier",
+                "lecture écran",
+                "accessibilité web française",
+                "outil RGAA gratuit",
+                "validation accessibilité",
+                "critères RGAA",
+                "test conformité RGAA",
                 "accessibilité numérique",
                 "design inclusif",
-                "lisibilité web",
-                "police accessible",
-                "taille police",
-                "espacement lettres",
-                "hauteur ligne",
-                "contraste texte",
-                "guide typo",
-                "bonnes pratiques typo",
-                "accessibilité typographique"
+                "tests accessibilité",
+                "simulateur daltonisme",
+                "contraste ratio",
+                "validation RGAA",
+                "outil accessibilité web",
+                "laboratoire RGAA",
+                "tests complets RGAA",
+                "conformité numérique française"
             ],
             "featureList": [
-                "Guide complet de bonnes pratiques typographiques",
-                "Test de lisibilité en temps réel",
-                "Validation WCAG 2.1 AA et AAA pour typographie",
-                "Sélection de polices accessibles",
-                "Test de contraste texte/fond",
-                "Export de styles typographiques (CSS, JSON)",
-                "Bonnes pratiques d'accessibilité web",
-                "Test de lisibilité gratuit",
-                "Outil d'accessibilité web",
-                "Critères WCAG 2.1 pour typographie",
+                "Tests de couleurs RGAA 4.1 complets",
+                "Validation WCAG 2.1 AA et AAA",
+                "Tests de navigation clavier",
+                "Validation lecture d'écran",
+                "Simulation daltonisme (protanopie, deutéranopie, tritanopie)",
+                "Tests de contraste en temps réel",
+                "Validation structure sémantique",
+                "Tests attributs ARIA",
+                "Validation alternatives textuelles",
+                "Tests d'ordre de tabulation",
+                "Validation indicateurs de focus",
+                "Tests de pièges clavier",
+                "Conformité RGAA française complète",
+                "Laboratoire d'accessibilité web",
+                "Tests gratuits d'accessibilité",
                 "Validation accessibilité numérique",
-                "Test de taille de police",
-                "Vérification espacement des lettres",
-                "Contrôle hauteur de ligne",
-                "Test de contraste avancé",
-                "Guide des polices recommandées",
-                "Conseils d'accessibilité typographique"
+                "Outils RGAA professionnels",
+                "Tests complets d'accessibilité"
             ],
             "offers": {
                 "@type": "Offer",
@@ -117,8 +119,8 @@ const TypographySEO: React.FC = () => {
             },
             "about": {
                 "@type": "Thing",
-                "name": "Accessibilité Web Typographie",
-                "description": "Bonnes pratiques d'accessibilité et conformité WCAG pour la typographie et la lisibilité"
+                "name": "Accessibilité Web Française",
+                "description": "Conformité RGAA 4.1 et WCAG 2.1 pour l'accessibilité numérique française"
             }
         };
 
@@ -134,7 +136,7 @@ const TypographySEO: React.FC = () => {
         script.textContent = JSON.stringify(structuredData);
         document.head.appendChild(script);
 
-        // Add additional meta tags for RGAA Typography
+        // Add additional meta tags for RGAA Lab
         const additionalMetaTags = [
             { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
             { name: 'googlebot', content: 'index, follow' },
@@ -150,17 +152,17 @@ const TypographySEO: React.FC = () => {
             { property: 'og:locale', content: 'fr_FR' },
             { property: 'article:author', content: 'TestMyColor' },
             { property: 'article:section', content: 'Accessibilité Web' },
-            { property: 'article:tag', content: 'WCAG' },
-            { property: 'article:tag', content: 'Typographie' },
-            { property: 'article:tag', content: 'Lisibilité' },
+            { property: 'article:tag', content: 'RGAA Lab' },
             { property: 'article:tag', content: 'Accessibilité' },
-            { property: 'article:tag', content: 'Bonnes Pratiques' },
+            { property: 'article:tag', content: 'Tests' },
+            { property: 'article:tag', content: 'Laboratoire' },
+            { property: 'article:tag', content: 'Conformité' },
             { name: 'twitter:site', content: '@testmycolor' },
             { name: 'twitter:creator', content: '@testmycolor' },
             { name: 'twitter:label1', content: 'Type' },
-            { name: 'twitter:data1', content: 'Guide Typographie Accessible' },
+            { name: 'twitter:data1', content: 'RGAA Lab' },
             { name: 'twitter:label2', content: 'Conformité' },
-            { name: 'twitter:data2', content: 'WCAG 2.1 AA/AAA' }
+            { name: 'twitter:data2', content: 'RGAA 4.1 & WCAG 2.1' }
         ];
 
         additionalMetaTags.forEach(tag => {
@@ -176,14 +178,14 @@ const TypographySEO: React.FC = () => {
             }
         });
 
-        // Add canonical URL for typo page
+        // Add canonical URL for RGAA Lab page
         const canonical = document.querySelector('link[rel="canonical"]');
         if (canonical) {
-            canonical.setAttribute('href', 'https://testmycolor.com/typo');
+            canonical.setAttribute('href', 'https://testmycolor.com/rgaa-lab');
         } else {
             const link = document.createElement('link');
             link.rel = 'canonical';
-            link.href = 'https://testmycolor.com/typo';
+            link.href = 'https://testmycolor.com/rgaa-lab';
             document.head.appendChild(link);
         }
 
@@ -196,62 +198,67 @@ const TypographySEO: React.FC = () => {
                     "mainEntity": [
                         {
                             "@type": "Question",
-                            "name": "Qu'est-ce que l'accessibilité typographique ?",
+                            "name": "Qu'est-ce que le RGAA Lab et comment l'utiliser ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "L'accessibilité typographique concerne la lisibilité et l'accessibilité des polices de caractères. Elle inclut la taille des polices, l'espacement des lettres, la hauteur de ligne, et le contraste entre le texte et l'arrière-plan. Ces bonnes pratiques sont essentielles pour garantir l'accessibilité visuelle selon WCAG 2.1."
+                                "text": "Le RGAA Lab est un laboratoire complet d'accessibilité web français qui regroupe tous les outils nécessaires pour tester la conformité RGAA 4.1 et WCAG 2.1. Il inclut des tests de couleurs, de contraste, de navigation clavier, de lecture d'écran et de structure sémantique. Utilisez-le pour valider l'accessibilité de vos projets web."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Quelle est la taille de police recommandée pour l'accessibilité ?",
+                            "name": "Quels types de tests RGAA sont disponibles ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Les bonnes pratiques recommandent une taille de police d'au moins 16px (ou 1.2em) pour le texte normal. Pour les textes importants, une taille de 18px (ou 1.5em) est recommandée. Ces tailles garantissent une lisibilité optimale pour tous les utilisateurs, y compris ceux avec des déficiences visuelles."
+                                "text": "Le RGAA Lab propose des tests complets : couleurs et contrastes (critères 3.1, 3.2, 3.3), navigation clavier (critères 7.1, 7.2, 7.3), lecture d'écran (critères 8.1, 8.2, 8.3), structure sémantique (critères 9.1, 9.2, 9.3), et attributs ARIA. Tous les tests respectent les critères RGAA 4.1 français."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Comment tester la lisibilité de mes polices ?",
+                            "name": "Le RGAA Lab est-il conforme aux standards français ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Notre outil vous permet de tester la lisibilité de vos polices en temps réel. Vous pouvez ajuster la taille, l'espacement des lettres, la hauteur de ligne et voir immédiatement l'impact sur l'accessibilité. Des tests de contraste WCAG sont également disponibles."
+                                "text": "Oui, le RGAA Lab est entièrement conforme au Référentiel Général d'Amélioration de l'Accessibilité (RGAA) 4.1, qui est le standard français obligatoire pour les sites web publics. Il respecte également les WCAG 2.1 niveau AA et AAA pour une accessibilité maximale."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Quelles polices sont les plus accessibles ?",
+                            "name": "Comment utiliser le RGAA Lab pour mes projets ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Les polices sans-serif comme Arial, Helvetica, ou Open Sans sont généralement plus accessibles. Les polices avec des caractères bien différenciés et un espacement approprié sont préférables. Notre guide vous aide à identifier les polices les plus adaptées selon les bonnes pratiques d'accessibilité."
+                                "text": "Le RGAA Lab est conçu pour être utilisé tout au long du processus de développement. Testez vos couleurs et contrastes, validez la navigation clavier, vérifiez la structure sémantique et les attributs ARIA. Exportez vos résultats pour documenter la conformité RGAA de vos projets."
                             }
                         }
                     ]
                 },
                 {
                     "@type": "HowTo",
-                    "name": "Comment optimiser l'accessibilité de votre typographie",
-                    "description": "Guide complet des bonnes pratiques d'accessibilité typographique",
+                    "name": "Comment utiliser le RGAA Lab pour valider l'accessibilité",
+                    "description": "Guide complet d'utilisation du RGAA Lab pour la validation d'accessibilité",
                     "step": [
                         {
                             "@type": "HowToStep",
-                            "name": "Sélectionnez votre police",
-                            "text": "Utilisez le sélecteur de polices pour choisir votre typographie"
+                            "name": "Accédez au RGAA Lab",
+                            "text": "Ouvrez le laboratoire d'accessibilité RGAA"
                         },
                         {
                             "@type": "HowToStep",
-                            "name": "Testez la lisibilité",
-                            "text": "Vérifiez automatiquement la conformité RGAA de votre typographie"
+                            "name": "Testez les couleurs",
+                            "text": "Utilisez les outils de test de couleurs et contrastes RGAA"
                         },
                         {
                             "@type": "HowToStep",
-                            "name": "Ajustez les paramètres",
-                            "text": "Modifiez la taille, l'espacement et la hauteur de ligne si nécessaire"
+                            "name": "Validez la navigation",
+                            "text": "Testez la navigation clavier et l'ordre de tabulation"
                         },
                         {
                             "@type": "HowToStep",
-                            "name": "Exportez vos styles",
-                            "text": "Générez le code CSS de votre typographie conforme RGAA"
+                            "name": "Vérifiez la lecture d'écran",
+                            "text": "Validez la structure sémantique et les attributs ARIA"
+                        },
+                        {
+                            "@type": "HowToStep",
+                            "name": "Exportez vos résultats",
+                            "text": "Générez un rapport de conformité RGAA complet"
                         }
                     ]
                 }
@@ -269,9 +276,9 @@ const TypographySEO: React.FC = () => {
             const scripts = document.querySelectorAll('script[type="application/ld+json"]');
             scripts.forEach(script => script.remove());
         };
-    }, [palette, font]);
+    }, [palette]);
 
     return null; // This component doesn't render anything
 };
 
-export default TypographySEO;
+export default RGAALabSEO;

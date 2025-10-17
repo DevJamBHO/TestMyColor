@@ -1,7 +1,7 @@
 {
-    "name": "test-my-color",
-    "short_name": "test-my-color",
-    "description": "Visualize and test your color palettes in real-time",
+    "name": "TestMyColor - Outils RGAA 2025",
+    "short_name": "TestMyColor",
+    "description": "TestMyColor - Outils RGAA 2025 pour l'accessibilité web française. Testeur de couleurs, contrastes WCAG 2.1, typographie accessible, design system RGAA 4.1",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",

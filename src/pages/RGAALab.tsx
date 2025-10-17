@@ -5,6 +5,7 @@ import { useColors } from '../context/ColorContext';
 import { useFont } from '../context/FontContext';
 import Separator from '../components/ui/Separator';
 import SectionTitle from '../components/ui/SectionTitle';
+import RGAALabSEO from '../components/RGAALabSEO';
 
 const RGAALab: React.FC = () => {
     const { palette } = useColors();
@@ -18,6 +19,7 @@ const RGAALab: React.FC = () => {
             fontFamily: font,
             transition: 'font-family 0.3s ease'
         }}>
+            <RGAALabSEO />
             <Header />
             <PageWrapper>
                 <div style={{ textAlign: 'center', marginBottom: '3rem' }}>

@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useColors } from '../context/ColorContext';
 import CustomButton from './ui/CustomButton';
 import Section from './ui/Section';
+import { trackRGAAEvent, AnalyticsEvents } from '../utils/analytics';
 
 const ColorPageContent: React.FC = () => {
     const { palette } = useColors();
+
+    // Track page view and RGAA criteria engagement
+    useEffect(() => {
+        trackRGAAEvent(AnalyticsEvents.SECTION_VIEWED, 'RGAA Criteria', {
+            page: 'Color',
+            section: 'RGAA Criteria Overview'
+        });
+    }, []);
 
     return (
         <div>
@@ -17,7 +26,7 @@ const ColorPageContent: React.FC = () => {
                 lineHeight: 1.2,
                 textAlign: 'center'
             }}>
-                Testeur RGAA Couleurs 2024 - Contraste WCAG 2.1 AA/AAA Gratuit
+                Testeur RGAA Couleurs 2025 - Contraste WCAG 2.1 AA/AAA Gratuit
             </h1>
 
             {/* Sous-titre descriptif */}
@@ -31,66 +40,50 @@ const ColorPageContent: React.FC = () => {
                 margin: '0 auto 2rem auto'
             }}>
                 Testeur RGAA 4.1 gratuit pour vérifier la conformité de vos couleurs et contrastes.
-                Outil français d'accessibilité web avec <a href="#compliance-checker" style={{ color: palette.primary, textDecoration: 'underline' }}>simulation daltonisme</a> et
-                <a href="#compliance" style={{ color: palette.primary, textDecoration: 'underline' }}>validation WCAG 2.1 AA/AAA</a> en temps réel.
+                Outil français d'accessibilité web avec <a href="#compliance-checker" style={{ color: palette.primary, textDecoration: 'underline' }}>simulation daltonisme</a> et&nbsp;
+                <a href="#compliance" style={{ color: palette.primary, textDecoration: 'underline' }}>validation WCAG 2.1 AA/AAA</a>&nbsp;en temps réel.
             </p>
 
             {/* H2 - Section critères RGAA principaux */}
             <Section id="features" title="Critères RGAA 4.1 - Couleurs et Contraste">
 
                 <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                    gap: '1.5rem',
-                    marginBottom: '2rem'
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2rem',
+                    marginBottom: '2rem',
+                    maxWidth: '1000px',
+                    margin: '0 auto 2rem auto'
                 }}>
                     <div style={{
-                        background: '#f8f9fa',
-                        padding: '1.5rem',
-                        borderRadius: 8,
-                        border: '1px solid #e9ecef'
+                        background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                        padding: '2rem',
+                        borderRadius: 12,
+                        border: '1px solid #e9ecef',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease'
                     }}>
-                        <h3 style={{
-                            fontSize: '1.3rem',
-                            fontWeight: 600,
-                            marginBottom: '1rem',
-                            color: palette.primary
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            marginBottom: '1rem'
                         }}>
-                            📏 Critère 3.2 - Contraste du Texte
-                        </h3>
-                        <p style={{
-                            marginBottom: '1rem',
-                            lineHeight: 1.6,
-                            color: '#555'
-                        }}>
-                            <strong>Dans chaque page web, le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisant ?</strong>
-                        </p>
-                        <ul style={{
-                            paddingLeft: '1.5rem',
-                            color: '#666',
-                            lineHeight: 1.5
-                        }}>
-                            <li><strong>Niveau AA :</strong> Ratio minimum 4.5:1 pour le texte normal</li>
-                            <li><strong>Niveau AAA :</strong> Ratio minimum 7:1 pour le texte normal</li>
-                            <li><strong>Texte large :</strong> 3:1 (AA) et 4.5:1 (AAA)</li>
-                            <li><strong>Exception :</strong> Logos et éléments décoratifs</li>
-                        </ul>
-                    </div>
-
-                    <div style={{
-                        background: '#f8f9fa',
-                        padding: '1.5rem',
-                        borderRadius: 8,
-                        border: '1px solid #e9ecef'
-                    }}>
-                        <h3 style={{
-                            fontSize: '1.3rem',
-                            fontWeight: 600,
-                            marginBottom: '1rem',
-                            color: palette.primary
-                        }}>
-                            🎨 Critère 3.1 - Information par la Couleur
-                        </h3>
+                            <div style={{
+                                width: '4px',
+                                height: '40px',
+                                background: 'linear-gradient(135deg, #e74c3c, #c0392b)',
+                                borderRadius: '2px',
+                                marginRight: '1rem'
+                            }}></div>
+                            <h3 style={{
+                                fontSize: '1.4rem',
+                                fontWeight: 700,
+                                color: '#2c3e50',
+                                margin: 0
+                            }}>
+                                Critère 3.1 - Information par la Couleur
+                            </h3>
+                        </div>
                         <p style={{
                             marginBottom: '1rem',
                             lineHeight: 1.6,
@@ -111,19 +104,82 @@ const ColorPageContent: React.FC = () => {
                     </div>
 
                     <div style={{
-                        background: '#f8f9fa',
-                        padding: '1.5rem',
-                        borderRadius: 8,
-                        border: '1px solid #e9ecef'
+                        background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                        padding: '2rem',
+                        borderRadius: 12,
+                        border: '1px solid #e9ecef',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease'
                     }}>
-                        <h3 style={{
-                            fontSize: '1.3rem',
-                            fontWeight: 600,
-                            marginBottom: '1rem',
-                            color: palette.primary
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            marginBottom: '1rem'
                         }}>
-                            🔍 Critère 3.3 - Contraste des Composants
-                        </h3>
+                            <div style={{
+                                width: '4px',
+                                height: '40px',
+                                background: 'linear-gradient(135deg, #3498db, #2980b9)',
+                                borderRadius: '2px',
+                                marginRight: '1rem'
+                            }}></div>
+                            <h3 style={{
+                                fontSize: '1.4rem',
+                                fontWeight: 700,
+                                color: '#2c3e50',
+                                margin: 0
+                            }}>
+                                Critère 3.2 - Contraste du Texte
+                            </h3>
+                        </div>
+                        <p style={{
+                            marginBottom: '1rem',
+                            lineHeight: 1.6,
+                            color: '#555'
+                        }}>
+                            <strong>Dans chaque page web, le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisant ?</strong>
+                        </p>
+                        <ul style={{
+                            paddingLeft: '1.5rem',
+                            color: '#666',
+                            lineHeight: 1.5
+                        }}>
+                            <li><strong>Niveau AA :</strong> Ratio minimum 4.5:1 pour le texte normal</li>
+                            <li><strong>Niveau AAA :</strong> Ratio minimum 7:1 pour le texte normal</li>
+                            <li><strong>Texte large :</strong> 3:1 (AA) et 4.5:1 (AAA)</li>
+                            <li><strong>Exception :</strong> Logos et éléments décoratifs</li>
+                        </ul>
+                    </div>
+
+                    <div style={{
+                        background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
+                        padding: '2rem',
+                        borderRadius: 12,
+                        border: '1px solid #e9ecef',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                    }}>
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            marginBottom: '1rem'
+                        }}>
+                            <div style={{
+                                width: '4px',
+                                height: '40px',
+                                background: 'linear-gradient(135deg, #27ae60, #229954)',
+                                borderRadius: '2px',
+                                marginRight: '1rem'
+                            }}></div>
+                            <h3 style={{
+                                fontSize: '1.4rem',
+                                fontWeight: 700,
+                                color: '#2c3e50',
+                                margin: 0
+                            }}>
+                                Critère 3.3 - Contraste des Composants
+                            </h3>
+                        </div>
                         <p style={{
                             marginBottom: '1rem',
                             lineHeight: 1.6,
@@ -142,6 +198,7 @@ const ColorPageContent: React.FC = () => {
                             <li><strong>Navigation :</strong> États actifs et inactifs distincts</li>
                         </ul>
                     </div>
+
                 </div>
             </Section>
 
@@ -197,7 +254,7 @@ const ColorPageContent: React.FC = () => {
                         <div style={{
                             fontSize: '2rem',
                             marginBottom: '0.5rem'
-                        }}>✅</div>
+                        }}></div>
                         <h4 style={{
                             fontSize: '1.1rem',
                             fontWeight: 600,
@@ -226,7 +283,7 @@ const ColorPageContent: React.FC = () => {
                         <div style={{
                             fontSize: '2rem',
                             marginBottom: '0.5rem'
-                        }}>⭐</div>
+                        }}></div>
                         <h4 style={{
                             fontSize: '1.1rem',
                             fontWeight: 600,
@@ -255,7 +312,7 @@ const ColorPageContent: React.FC = () => {
                         <div style={{
                             fontSize: '2rem',
                             marginBottom: '0.5rem'
-                        }}>❌</div>
+                        }}></div>
                         <h4 style={{
                             fontSize: '1.1rem',
                             fontWeight: 600,
@@ -296,7 +353,7 @@ const ColorPageContent: React.FC = () => {
                             marginBottom: '1rem',
                             color: '#0066cc'
                         }}>
-                            🎯 Règles d'Or
+                            Règles d'Or
                         </h3>
                         <ul style={{
                             paddingLeft: '1.5rem',
@@ -322,7 +379,7 @@ const ColorPageContent: React.FC = () => {
                             marginBottom: '1rem',
                             color: '#cc5500'
                         }}>
-                            ⚠️ Erreurs Courantes
+                            Erreurs Courantes
                         </h3>
                         <ul style={{
                             paddingLeft: '1.5rem',
@@ -348,7 +405,7 @@ const ColorPageContent: React.FC = () => {
                             marginBottom: '1rem',
                             color: '#006600'
                         }}>
-                            ✅ Solutions Recommandées
+                            Solutions Recommandées
                         </h3>
                         <ul style={{
                             paddingLeft: '1.5rem',

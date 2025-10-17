@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PaletteGrid from '../components/PaletteGrid';
 import PageWrapper from '../components/ui/PageWrapper';
 import Header from '../components/ui/Header';
@@ -17,10 +17,21 @@ import ColorStructuredData from '../components/ColorStructuredData';
 import ColorFAQ from '../components/ColorFAQ';
 import Section from '../components/ui/Section';
 import Breadcrumb from '../components/Breadcrumb';
+import { trackColorEvent, AnalyticsEvents } from '../utils/analytics';
 
 const Color: React.FC = () => {
     const { palette } = useColors();
     const { font } = useFont();
+
+    // Track color page view
+    useEffect(() => {
+        trackColorEvent(AnalyticsEvents.PAGE_VIEWED, palette.primary, {
+            page: 'Color',
+            section: 'Color Tools',
+            primaryColor: palette.primary,
+            secondaryColor: palette.secondary
+        });
+    }, [palette.primary, palette.secondary]);
 
     return (
         <div style={{

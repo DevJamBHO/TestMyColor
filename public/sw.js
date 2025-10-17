@@ -1,6 +1,6 @@
-const CACHE_NAME = 'test-my-color-v1';
-const STATIC_CACHE = 'static-v1';
-const DYNAMIC_CACHE = 'dynamic-v1';
+const CACHE_NAME = 'test-my-color-v2';
+const STATIC_CACHE = 'static-v2';
+const DYNAMIC_CACHE = 'dynamic-v2';
 
 // Ressources à mettre en cache immédiatement
 const STATIC_RESOURCES = [
@@ -46,43 +46,50 @@ self.addEventListener('activate', event => {
     );
 });
 
-// Stratégie de cache : Cache First, then Network
+// Stratégie de cache : Network First pour les pages, Cache First pour les assets
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // Retourne la ressource du cache si elle existe
-                if (response) {
-                    return response;
-                }
-
-                // Sinon, fait la requête réseau
-                return fetch(event.request)
-                    .then(response => {
-                        // Vérifie si la réponse est valide
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-
-                        // Clone la réponse car elle ne peut être utilisée qu'une fois
+    // Pour les pages HTML, privilégier le réseau
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    // Si la requête réseau réussit, met à jour le cache
+                    if (response && response.status === 200) {
                         const responseToCache = response.clone();
-
-                        // Met en cache la nouvelle ressource
                         caches.open(DYNAMIC_CACHE)
                             .then(cache => {
                                 cache.put(event.request, responseToCache);
                             });
-
+                    }
+                    return response;
+                })
+                .catch(() => {
+                    // En cas d'erreur réseau, utilise le cache
+                    return caches.match(event.request);
+                })
+        );
+    } else {
+        // Pour les autres ressources (CSS, JS, images), utilise Cache First
+        event.respondWith(
+            caches.match(event.request)
+                .then(response => {
+                    if (response) {
                         return response;
-                    })
-                    .catch(() => {
-                        // En cas d'erreur réseau, on peut retourner une page de fallback
-                        if (event.request.mode === 'navigate') {
-                            return caches.match('/');
-                        }
-                    });
-            })
-    );
+                    }
+                    return fetch(event.request)
+                        .then(response => {
+                            if (response && response.status === 200) {
+                                const responseToCache = response.clone();
+                                caches.open(DYNAMIC_CACHE)
+                                    .then(cache => {
+                                        cache.put(event.request, responseToCache);
+                                    });
+                            }
+                            return response;
+                        });
+                })
+        );
+    }
 });
 
 // Gestion des mises à jour

@@ -6,6 +6,7 @@ import CustomButton from './ui/CustomButton';
 import FloatingPanel, { FloatingPanelRef } from './ui/FloatingPanel';
 import chroma from 'chroma-js';
 import { calculateContrastRatio, getWCAGCompliance } from '../utils/contrast';
+import { trackColorEvent, AnalyticsEvents } from '../utils/analytics';
 
 export interface ColorControlsRef {
     open: () => void;
@@ -36,6 +37,13 @@ const ColorControls = forwardRef<ColorControlsRef, ColorControlsProps>(({
     const handleColorChange = (colorKey: string, value: string) => {
         setPalette({ ...palette, [colorKey]: value });
         generateSuggestions(colorKey, value);
+
+        // Track color change event
+        trackColorEvent(AnalyticsEvents.COLOR_CHANGED, value, {
+            colorKey,
+            panel: 'Floating',
+            contrastRatio: calculateContrastRatio(value, palette.background)
+        });
     };
 
     const generateSuggestions = (colorKey: string, baseColor: string) => {

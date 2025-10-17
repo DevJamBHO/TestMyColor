@@ -7,6 +7,7 @@ import { useFont } from '../context/FontContext';
 import { Button, Card, CardHeader, CardBody, CardFooter, Input, AdaptiveButton } from '../design-system';
 import CustomButton from '../components/ui/CustomButton';
 import Separator from '../components/ui/Separator';
+import DesignSystemSEO from '../components/DesignSystemSEO';
 
 const DesignSystem: React.FC = () => {
     const { palette } = useColors();
@@ -20,6 +21,7 @@ const DesignSystem: React.FC = () => {
             fontFamily: font,
             transition: 'font-family 0.3s ease'
         }}>
+            <DesignSystemSEO />
             <Header />
             <Breadcrumb />
             <PageWrapper>
@@ -33,7 +35,7 @@ const DesignSystem: React.FC = () => {
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text'
                     }}>
-                        Design System
+                        Design System RGAA 2025
                     </h1>
                     <p style={{
                         fontSize: '1.2rem',
@@ -42,7 +44,8 @@ const DesignSystem: React.FC = () => {
                         margin: '0 auto',
                         lineHeight: 1.6
                     }}>
-                        Un système de design complet pour créer des interfaces cohérentes et accessibles.
+                        Système de design complet conforme RGAA 4.1 et WCAG 2.1 pour créer des interfaces
+                        cohérentes, accessibles et inclusives. Composants testés et validés pour l'accessibilité numérique française.
                     </p>
                 </div>
 

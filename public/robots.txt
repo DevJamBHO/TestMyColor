@@ -39,7 +39,7 @@ Allow: /*.svg$
 Allow: /*.webp$
 
 # Sitemap
-Sitemap: https://test-my-color.com/sitemap.xml
+Sitemap: https://testmycolor.com/sitemap.xml
 
 # Crawl-delay optimisé pour SEO
 Crawl-delay: 1 

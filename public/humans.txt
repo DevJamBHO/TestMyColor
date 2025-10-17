@@ -1,0 +1,32 @@
+# TestMyColor - Outils RGAA 2024
+
+## Équipe
+- Développeur Front-end: Olivier LB
+- Spécialisation: Accessibilité Web Française (RGAA 4.1)
+- Contact: contact@testmycolor.com
+
+## Technologies
+- React 18 + TypeScript
+- Vite (Build Tool)
+- CSS3 + Design System
+- PWA (Progressive Web App)
+
+## Standards Respectés
+- RGAA 4.1 (Référentiel Général d'Amélioration de l'Accessibilité)
+- WCAG 2.1 niveau AA et AAA
+- Standards français d'accessibilité numérique
+
+## Mission
+Créer des outils gratuits et open source pour améliorer l'accessibilité web française, 
+en respectant les standards RGAA 4.1 et en facilitant la conformité pour tous les 
+développeurs et designers français.
+
+## Site Web
+https://testmycolor.com
+
+## Open Source
+Code source disponible sur GitHub
+Licence: MIT
+
+## Dernière mise à jour
+Octobre 2025

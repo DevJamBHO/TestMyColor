@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import AdvancedFontSelector from '../components/AdvancedFontSelector';
 import AdvancedTypographyShowcase from '../components/AdvancedTypographyShowcase';
 import TypoPlayground from '../components/TypoPlayground';
@@ -12,10 +13,19 @@ import TypographyPageContent from '../components/TypographyPageContent';
 import TypographyFAQ from '../components/TypographyFAQ';
 import { useColors } from '../context/ColorContext';
 import { useFont } from '../context/FontContext';
+import { trackTypographyEvent, AnalyticsEvents } from '../utils/analytics';
 
 const Typo: React.FC = () => {
     const { palette } = useColors();
     const { font } = useFont();
+
+    // Track typography page view
+    useEffect(() => {
+        trackTypographyEvent(AnalyticsEvents.PAGE_VIEWED, font, {
+            page: 'Typography',
+            section: 'Typography Tools'
+        });
+    }, [font]);
 
     return (
         <div style={{

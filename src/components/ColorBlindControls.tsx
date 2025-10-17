@@ -2,6 +2,7 @@ import React, { forwardRef, useImperativeHandle } from 'react';
 import { useColorBlind, colorBlindTypes } from '../context/ColorBlindContext';
 import CustomButton from './ui/CustomButton';
 import FloatingPanel, { FloatingPanelRef } from './ui/FloatingPanel';
+import { trackToolUsage, AnalyticsEvents } from '../utils/analytics';
 
 export interface ColorBlindControlsRef {
     open: () => void;
@@ -48,7 +49,13 @@ const ColorBlindControls = forwardRef<ColorBlindControlsRef, ColorBlindControlsP
                         variant={selectedType === type.id ? 'filled' : 'outline'}
                         color={selectedType === type.id ? 'primary' : 'secondary'}
                         size="small"
-                        onClick={() => setSelectedType(type.id)}
+                        onClick={() => {
+                            setSelectedType(type.id);
+                            trackToolUsage('Colorblind Simulation', 'Type Selected', {
+                                type: type.id,
+                                panel: 'Floating'
+                            });
+                        }}
                         style={{
                             fontSize: '0.75rem',
                             padding: '0.4rem 0.6rem',

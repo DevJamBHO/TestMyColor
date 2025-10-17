@@ -4,6 +4,7 @@ import Header from '../components/ui/Header';
 import { useColors } from '../context/ColorContext';
 import { useFont } from '../context/FontContext';
 import SmartPaletteGenerator from '../components/SmartPaletteGenerator';
+import SmartPaletteSEO from '../components/SmartPaletteSEO';
 
 const SmartPalette: React.FC = () => {
     const { palette } = useColors();
@@ -16,11 +17,13 @@ const SmartPalette: React.FC = () => {
             fontFamily: font,
             transition: 'font-family 0.3s ease'
         }}>
+            <SmartPaletteSEO />
             <Header />
             <PageWrapper>
-                <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>Smart Palette Generator</h1>
+                <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8 }}>Générateur Palettes RGAA 2025</h1>
                 <p style={{ fontSize: 17, opacity: 0.8, marginBottom: 32 }}>
-                    Generate harmonious color palettes based on design rules, or extract colors from an image.
+                    Générateur intelligent de palettes de couleurs accessibles conformes RGAA 4.1 et WCAG 2.1.
+                    Créez automatiquement des palettes harmonieuses et inclusives pour vos projets web.
                 </p>
                 <div style={{
                     background: '#fff',
