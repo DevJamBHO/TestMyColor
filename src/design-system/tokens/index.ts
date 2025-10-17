@@ -6,24 +6,29 @@ export * from './shadows';
 export * from './borders';
 
 // Token resolver utility
-export const resolveToken = (tokenPath: string): string => {
+export const resolveToken = async (tokenPath: string): Promise<string> => {
     const [category, ...path] = tokenPath.split('.');
 
     switch (category) {
         case 'color':
-            return require('./colors').getColorValue(path.join('.'));
+            const colors = await import('./colors');
+            return colors.getColorValue(path.join('.'));
         case 'fontSize':
         case 'fontWeight':
         case 'lineHeight':
         case 'letterSpacing':
         case 'fontFamily':
-            return require('./typography').getTypographyValue(`${category}.${path.join('.')}`);
+            const typography = await import('./typography');
+            return typography.getTypographyValue(`${category}.${path.join('.')}`);
         case 'spacing':
-            return require('./spacing').getSpacingValue(path.join('.'));
+            const spacing = await import('./spacing');
+            return spacing.getSpacingValue(path.join('.'));
         case 'shadow':
-            return require('./shadows').getShadowValue(path.join('.'));
+            const shadows = await import('./shadows');
+            return shadows.getShadowValue(path.join('.'));
         case 'border':
-            return require('./borders').getBorderValue(path.join('.'));
+            const borders = await import('./borders');
+            return borders.getBorderValue(path.join('.'));
         default:
             return tokenPath;
     }

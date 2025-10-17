@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useRef, useEffect } from 'react';
+import { forwardRef, useImperativeHandle, useRef, useEffect } from 'react';
 import ColorControls, { ColorControlsRef } from './ColorControls';
 import ColorBlindControls, { ColorBlindControlsRef } from './ColorBlindControls';
 import TypographyControls, { TypographyControlsRef } from './TypographyControls';

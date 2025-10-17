@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useFont } from '../context/FontContext';
 import { useColors } from '../context/ColorContext';
-import { ALL_FONTS, FONTS_BY_CATEGORY, FONT_CATEGORIES, POPULAR_FONTS, RECOMMENDED_FONTS } from '../data/fonts';
+import { ALL_FONTS, FONTS_BY_CATEGORY, FONT_CATEGORIES, POPULAR_FONTS } from '../data/fonts';
 import { trackPaletteEvent, AnalyticsEvents } from '../utils/analytics';
 import SectionTitle from './ui/SectionTitle';
 import CustomButton from './ui/CustomButton';

@@ -3,7 +3,6 @@ import PageWrapper from '../components/ui/PageWrapper';
 import Header from '../components/ui/Header';
 import { useColors } from '../context/ColorContext';
 import { useFont } from '../context/FontContext';
-import Separator from '../components/ui/Separator';
 import SectionTitle from '../components/ui/SectionTitle';
 import RGAALabSEO from '../components/RGAALabSEO';
 

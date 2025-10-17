@@ -173,7 +173,7 @@ const FloatingPanel = forwardRef<FloatingPanelRef, FloatingPanelProps>(({
                                     }}
                                     onMouseLeave={(e) => {
                                         e.currentTarget.style.background = palette.background;
-                                        e.currentTarget.style.color = palette.textSecondary;
+                                        e.currentTarget.style.color = palette.textSecondary || palette.secondary;
                                         e.currentTarget.style.transform = 'scale(1)';
                                     }}
                                     onFocus={(e) => {

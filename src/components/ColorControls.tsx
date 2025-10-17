@@ -71,11 +71,11 @@ const ColorControls = forwardRef<ColorControlsRef, ColorControlsProps>(({
             color.desaturate(0.6).hex(),
 
             // Complementary color
-            color.set('hsl.h', '+', 180).hex(),
+            color.set('hsl.h', '+180').hex(),
 
             // Triadic colors
-            color.set('hsl.h', '+', 120).hex(),
-            color.set('hsl.h', '+', 240).hex(),
+            color.set('hsl.h', '+120').hex(),
+            color.set('hsl.h', '+240').hex(),
         ];
 
         // Filter suggestions based on RGAA compliance with realistic UI combinations

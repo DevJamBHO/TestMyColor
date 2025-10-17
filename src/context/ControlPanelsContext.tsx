@@ -2,13 +2,13 @@ import React, { createContext, useContext, useRef } from 'react';
 import { ControlPanelsRef } from '../components/ControlPanels';
 
 interface ControlPanelsContextType {
-    controlPanelsRef: React.RefObject<ControlPanelsRef>;
+    controlPanelsRef: React.RefObject<ControlPanelsRef | null>;
 }
 
 const ControlPanelsContext = createContext<ControlPanelsContextType | undefined>(undefined);
 
 export const ControlPanelsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const controlPanelsRef = useRef<ControlPanelsRef>(null);
+    const controlPanelsRef = useRef<ControlPanelsRef | null>(null);
 
     return (
         <ControlPanelsContext.Provider value={{ controlPanelsRef }}>

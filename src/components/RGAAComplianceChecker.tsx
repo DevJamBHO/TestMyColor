@@ -239,7 +239,7 @@ const RGAAComplianceChecker: React.FC = () => {
 
         return allCombinations.sort((a, b) => {
             // Sort by logical first, then by status (pass > warning > fail)
-            if (a.isLogical !== b.isLogical) return b.isLogical - a.isLogical;
+            if (a.isLogical !== b.isLogical) return (b.isLogical ? 1 : 0) - (a.isLogical ? 1 : 0);
             const statusOrder = { 'pass': 3, 'warning': 2, 'fail': 1 };
             return statusOrder[b.status] - statusOrder[a.status];
         });

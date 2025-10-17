@@ -35,7 +35,7 @@ export const AdaptiveButton: React.FC<AdaptiveButtonProps> = ({
     };
 
     // Styles personnalisés pour utiliser les couleurs du contexte
-    const contextualStyles: React.CSSProperties = useContextColors ? {
+    const contextualStyles: React.CSSProperties = useContextColors ? ({
         ...(color === 'primary' && {
             '--ds-button-bg': palette.primary,
             '--ds-button-hover-bg': palette.primary,
@@ -51,7 +51,7 @@ export const AdaptiveButton: React.FC<AdaptiveButtonProps> = ({
             '--ds-button-hover-bg': palette.tertiary,
             '--ds-button-active-bg': palette.tertiary,
         }),
-    } : {};
+    } as React.CSSProperties) : {};
 
     return (
         <Button

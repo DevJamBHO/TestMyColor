@@ -340,7 +340,7 @@ const TypographyControls = forwardRef<TypographyControlsRef, TypographyControlsP
                                                     <CustomButton
                                                         label="Supprimer"
                                                         variant="outline"
-                                                        color="error"
+                                                        color="tertiary"
                                                         size="small"
                                                         onClick={() => removeUploadedFont(fontData.name)}
                                                     />

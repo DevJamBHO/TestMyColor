@@ -6,6 +6,9 @@ export interface Palette {
   primary: string;
   secondary: string;
   tertiary: string;
+  surface?: string;
+  border?: string;
+  textSecondary?: string;
 }
 
 const defaultPalette: Palette = {

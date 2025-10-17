@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useColors } from '../context/ColorContext';
-import CustomButton from './ui/CustomButton';
 import Section from './ui/Section';
 import { trackRGAAEvent, AnalyticsEvents } from '../utils/analytics';
 

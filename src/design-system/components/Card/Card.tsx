@@ -102,11 +102,7 @@ export const Card: React.FC<CardProps> = ({
         border: variantConfig.border,
         boxShadow: variantConfig.boxShadow,
 
-        // Hover effect for interactive cards
-        '&:hover': {
-            transform: 'translateY(-2px)',
-            boxShadow: getShadowValue('shadow.xl'),
-        },
+        // Hover effect will be handled via CSS
     };
 
     return (
@@ -117,7 +113,7 @@ export const Card: React.FC<CardProps> = ({
         >
             {children}
 
-            <style jsx>{`
+            <style>{`
         .design-system-card:hover {
           transform: translateY(-2px);
           box-shadow: ${getShadowValue('shadow.xl')};

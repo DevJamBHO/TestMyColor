@@ -10,7 +10,7 @@ export type InputSize = 'sm' | 'md' | 'lg';
 export type InputState = 'default' | 'error' | 'success' | 'warning';
 
 // Input props interface
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
     variant?: InputVariant;
     size?: InputSize;
     state?: InputState;
@@ -146,22 +146,11 @@ export const Input: React.FC<InputProps> = ({
         // State styles
         borderColor: isDisabled ? getColorValue('gray.300') : stateConfig.borderColor,
 
-        // Focus styles
-        '&:focus': {
-            borderColor: stateConfig.focusBorderColor,
-            boxShadow: `0 0 0 3px ${stateConfig.focusRingColor}`,
-        },
+        // Focus styles will be handled via CSS
 
-        // Placeholder styles
-        '&::placeholder': {
-            color: getColorValue('gray.400'),
-        },
+        // Placeholder styles will be handled via CSS
 
-        // Disabled styles
-        '&:disabled': {
-            cursor: 'not-allowed',
-            opacity: 0.6,
-        },
+        // Disabled styles will be handled via CSS
     };
 
     const containerStyles: React.CSSProperties = {
@@ -243,7 +232,7 @@ export const Input: React.FC<InputProps> = ({
                 </div>
             )}
 
-            <style jsx>{`
+            <style>{`
         .design-system-input:focus {
           border-color: ${stateConfig.focusBorderColor};
           box-shadow: 0 0 0 3px ${stateConfig.focusRingColor};

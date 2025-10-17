@@ -76,15 +76,15 @@ function mapToSitePalette(base: string, generated: string[]) {
     const palette = { primary, secondary, tertiary, background, text };
     const seen = new Set();
     for (const key of paletteRoles) {
-        if (seen.has(palette[key])) {
+        if (seen.has((palette as any)[key])) {
             // Si doublon, on met une valeur par défaut
-            if (key === 'background') palette[key] = '#F5F5F5';
-            else if (key === 'text') palette[key] = '#2E2E2E';
-            else if (key === 'primary') palette[key] = '#4A90E2';
-            else if (key === 'secondary') palette[key] = '#7B8C99';
-            else if (key === 'tertiary') palette[key] = '#F8C471';
+            if (key === 'background') (palette as any)[key] = '#F5F5F5';
+            else if (key === 'text') (palette as any)[key] = '#2E2E2E';
+            else if (key === 'primary') (palette as any)[key] = '#4A90E2';
+            else if (key === 'secondary') (palette as any)[key] = '#7B8C99';
+            else if (key === 'tertiary') (palette as any)[key] = '#F8C471';
         }
-        seen.add(palette[key]);
+        seen.add((palette as any)[key]);
     }
     return palette;
 }
@@ -107,7 +107,7 @@ const SmartPaletteGenerator: React.FC = () => {
     // Pour l'affichage façon Coolors
     const paletteToShow = paletteRoles.map(role => ({
         role,
-        color: mapped[role],
+        color: (mapped as any)[role],
         label: roleLabels[role],
     }));
 

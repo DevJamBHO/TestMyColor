@@ -227,7 +227,7 @@ const GlobalSidebarMenu: React.FC = () => {
         // Track menu navigation
         trackToolUsage('Navigation', 'Menu Clicked', {
             href,
-            page: currentPage
+            page: currentPageTitle
         });
 
         // Scroll vers le haut avant la navigation
@@ -446,7 +446,7 @@ const GlobalSidebarMenu: React.FC = () => {
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.background = 'transparent';
-                            e.currentTarget.style.color = palette.textSecondary;
+                            e.currentTarget.style.color = palette.textSecondary || palette.secondary;
                         }}
                         aria-label="Masquer le menu"
                         title="Masquer le menu"

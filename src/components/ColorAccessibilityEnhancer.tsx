@@ -79,8 +79,9 @@ const ColorAccessibilityEnhancer: React.FC = () => {
             // Add keyboard event listeners for custom components
             const customButtons = document.querySelectorAll('[role="button"]:not(button)');
             customButtons.forEach(button => {
-                button.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
+                button.addEventListener('keydown', (e: Event) => {
+                    const keyEvent = e as KeyboardEvent;
+                    if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
                         e.preventDefault();
                         (button as HTMLElement).click();
                     }

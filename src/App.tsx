@@ -15,7 +15,6 @@ import { trackEvent } from './utils/analytics';
 import SmartPalette from './pages/SmartPalette';
 import ControlPanelsWrapper from './components/ControlPanelsWrapper';
 import GlobalSidebarMenu from './components/GlobalSidebarMenu';
-import Breadcrumb from './components/Breadcrumb';
 import BreadcrumbProvider from './components/ui/BreadcrumbProvider';
 import useScrollToTop from './hooks/useScrollToTop';
 import { usePanelsState } from './context/PanelsStateContext';
